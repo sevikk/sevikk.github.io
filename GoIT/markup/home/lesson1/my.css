@@ -6,9 +6,9 @@ html {
 }
 
 body {
-  margin-left: 400px;
-  margin-right: 400px;
-  border: 20px solid white;
+  margin-left: 350px;
+  margin-right: 350px;
+  border: 50px solid white;
   background-color: white;
   box-shadow: 1px 1px 1px 1px black;
 }
