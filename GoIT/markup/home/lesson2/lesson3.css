@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: lightgrey;
+}
+.allbody {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 1000px;
+  background-color: white;
+  border: 1px solid black;
+}
+.logo {
+   position: absolute;
+   top: 50px;
+   left: 40px;
+}
+
+.header {
+  position: absolute;
+  top: 130px;
+  left: 40px;
+  width: 1010px;
+  height: 40px;
+  background: linear-gradient(to top, #454444, #5c5c5c);
+}
+
+.hcontent li {
+  float:left;
+  list-style: none;
+}
+.button {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+	vertical-align: middle;
+  color: white;
+  text-shadow: 1px 1px 2px grey;
+  }
+
+  .button a {
+    text-decoration: none;
+    color: white;
+    display: inline;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    padding-top: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 12px;
+    text-shadow: 2px 2px 1px grey;
+
+  }
+  .button a:hover {
+    background-color: black;
+    border: 1px solid white;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 210px;
+    left:40px;
+    width: 100px;
+    height: 40px;
+    background-color: white;
+  }
+
+  .scontent li {
+    float: left;
+    list-style: none;
+  }
+  .buttonsc {
+    height: 25px;
+    width: 200px;
+    padding-left: 20px;
+    padding-top: 15px;
+    border: 1px solid lightgrey;
+    color: grey;
+  }
+  li:nth-child(3) {
+    color: black;
+    width: 180px;
+    padding-left: 40px;
+  }
+
+ .bicycle {
+   position: absolute;
+   top: 210px;
+   left: 372px;
+ }
+
+  .text {
+    float: right;
+    width: 645px;
+    margin-top: 650px;
+    margin-right: 60px;
+  }
+
+  .footer {
+    position: absolute;
+    top: 900px;
+    left: 40px;
+    width: 1010px;
+    height: 40px;
+    background-color: #e1e1e1;
+  }
+
+   .fcontent li {
+     display: inline-block;
+     float: left;
+     padding-left: 10px;
+     padding-top: 10px;
+     height: 30px;
+     width: 100px;
+     cursor: pointer;
+   	 vertical-align: middle;
+     list-style: none;
+     color: black;
+
+   }
+   .fcontent li a {
+     text-decoration: underline;
+     color: black;
+   }
+   #A {
+     float: right;
+     height: 40px;
+     width: 200px;
+   }
