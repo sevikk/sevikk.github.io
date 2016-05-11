@@ -1,11 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-}
-
+  }
 body {
   background-color: lightgrey;
-}
+  font-family: 'Open Sans', sans-serif;
+  }
 .allbody {
   position: relative;
   margin: 0 auto;
@@ -13,13 +13,13 @@ body {
   height: 1000px;
   background-color: white;
   border: 1px solid black;
-}
+  box-shadow: 2px 2px 2px 2px grey;
+  }
 .logo {
    position: absolute;
    top: 50px;
    left: 40px;
-}
-
+  }
 .header {
   position: absolute;
   top: 130px;
@@ -27,26 +27,25 @@ body {
   width: 1010px;
   height: 40px;
   background: linear-gradient(to top, #454444, #5c5c5c);
-}
-
+  font-size: 13px;
+  }
 .hcontent li {
   float:left;
   list-style: none;
-}
+  }
 .button {
   display: inline-block;
-  height: 30px;
+  height: 28px;
   width: 100px;
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 32px;
   cursor: pointer;
 	vertical-align: middle;
   color: white;
-  text-shadow: 1px 1px 2px grey;
+  text-shadow: 1px 1px 1px grey;
   }
-
-  .button a {
+.button a {
     text-decoration: none;
     color: white;
     display: inline;
@@ -56,56 +55,78 @@ body {
     padding-top: 11px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 12px;
-    text-shadow: 2px 2px 1px grey;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 1px  grey;
 
   }
-  .button a:hover {
+.button a:hover {
     background-color: black;
-    border: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
   }
 
-  .sidebar {
+.sidebar {
     position: absolute;
     top: 210px;
     left:40px;
-    width: 100px;
-    height: 40px;
+    width: 219px;
+    height: 246px;
     background-color: white;
+    font-size: 11px;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
   }
 
-  .scontent li {
+.scontent li {
     float: left;
     list-style: none;
   }
-  .buttonsc {
+.buttonsc {
+    display: block;
     height: 25px;
     width: 200px;
     padding-left: 20px;
     padding-top: 15px;
-    border: 1px solid lightgrey;
+    border-bottom: 1px solid grey;
     color: grey;
+    cursor: pointer;
+  	vertical-align: middle;
   }
-  li:nth-child(3) {
-    color: black;
-    width: 180px;
-    padding-left: 40px;
-  }
+.buttonsc a {
+  text-decoration: none;
+  color: grey;
+  padding-top: 11px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
 
- .bicycle {
+.buttonsc a:hover {
+  position: relative;
+  left: 20px;
+  color: black;
+}
+.buttonsc:hover {
+  background-color: lightgrey;
+  border-right: 1px solid grey;
+}
+
+.bicycle {
    position: absolute;
    top: 210px;
    left: 372px;
  }
 
-  .text {
+.text {
     float: right;
-    width: 645px;
+    width: 650px;
     margin-top: 650px;
     margin-right: 60px;
+    font-size: 14px;
   }
 
-  .footer {
+.footer {
     position: absolute;
     top: 900px;
     left: 40px;
@@ -113,13 +134,12 @@ body {
     height: 40px;
     background-color: #e1e1e1;
   }
-
-   .fcontent li {
+.fcontentli {
      display: inline-block;
-     float: left;
-     padding-left: 10px;
-     padding-top: 10px;
-     height: 30px;
+     padding-left: 18px;
+     padding-top: 8px;
+     padding-right: 32px;
+     height: 32px;
      width: 100px;
      cursor: pointer;
    	 vertical-align: middle;
@@ -127,12 +147,19 @@ body {
      color: black;
 
    }
-   .fcontent li a {
-     text-decoration: underline;
+.fcontent li a {
+     text-decoration: none;
      color: black;
+     font-size: 13px;
    }
-   #A {
-     float: right;
-     height: 40px;
-     width: 200px;
+.fcontentli a:hover {
+  text-decoration: underline;
+}
+
+.fcontent li:last-child {
+    float: right;
+    font-size: 13px;
+    list-style: none;
+    padding-top: 12px;
+    padding-right: 18px;
    }
