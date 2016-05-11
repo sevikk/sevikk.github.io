@@ -10,6 +10,7 @@ body {
   padding: 40px;
   background-color: white;
   box-shadow: 1px 1px 1px 1px black;
+  width: 510px;
 }
 header {
   font-weight: bold;
