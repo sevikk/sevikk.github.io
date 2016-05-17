@@ -1,12 +1,5 @@
 body {
   background-image: url(backmain.png);
-  background-repeat: no-repeat;
-}
-.toplog {
-  height: 37px;
-}
-.toplog img {
-  height: 37px;
 }
 .backgrwhite {
   margin: 0 auto;
@@ -16,7 +9,6 @@ body {
   background-color: white;
   box-shadow: 1px 1px 1px 1px black;
 }
-
 .adventures {
   background-image: url(logo.png);
   background-repeat: no-repeat;
@@ -29,7 +21,6 @@ body {
   color: #128aa7;
   font-size: 13px;
 }
-
 .contacts {
   float:right;
   margin-top: 15px;
@@ -71,8 +62,9 @@ body {
 .mainmenu {
   float: left;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
   border: 1px solid black;
-  box-shadow: 0 3px 3px 0 black;
+  box-shadow: 0 1px 1px 0 black;
 }
 .mainmenu ul {
   display: block;
@@ -80,6 +72,7 @@ body {
   width: 980px;
   background-color: #333333;
   color: white;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
 }
 ul:after {
@@ -97,7 +90,6 @@ ul.menu > li {
 ul.menu > li:nth-child(5){
     width: 135px;
   }
-
 ul.menu > li > a {
     display: block;
     color: white;
@@ -105,22 +97,19 @@ ul.menu > li > a {
     text-decoration: none;
     vertical-align: middle;
   }
-ul.menu > li > a:hover {
-    background-color: #333333;
-}
 ul.submenu {
     display: none;
     position: absolute;
     width: 100px;
-    top: 24px;
-    left: 0;
+    top: 15px;
+    left: -11px;
     background-color: #333333;
     border: 1px solid #333333;
-    box-shadow: 0 3px 3px 0 black;
+    box-shadow: 0 1px 1px 0 black;
 }
 ul.submenu > li {
     display: block;
-    margin-top: 5px;
+    padding-bottom: 10px;
 }
 ul.submenu > li > a {
     display: block;
@@ -152,7 +141,6 @@ ul.menu > li:hover > ul.submenu {
   font-weight: bold;
   text-align: center;
 }
-
 .ccontent ul {
   width: 200px;
   padding-left: 10px;
@@ -179,7 +167,6 @@ ul.menu > li:hover > ul.submenu {
   font-weight: bold;
   text-align: center;
 }
-
 .ccontent2 ul {
   width: 200px;
   padding-left: 10px;
@@ -189,7 +176,6 @@ ul.menu > li:hover > ul.submenu {
 .ccontent2 li {
   padding-top: 6px;
 }
-
 .footer {
   margin-bottom: 15px;
   color: white;
