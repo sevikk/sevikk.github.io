@@ -1,0 +1,214 @@
+body {
+  background-image: url(bg2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@font-face {
+    font-family: 'Helvetica Neue Regular';
+    src: url('Fonts/helveticaneue-thin-webfont.eot');
+    src: url('Fonts/helveticaneue-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Fonts/helveticaneue-thin-webfont.woff2') format('woff2'),
+         url('Fonts/helveticaneue-thin-webfont.woff') format('woff'),
+         url('Fonts/helveticaneue-thin-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.menu {
+  width: 100%;
+  height: 46px;
+  background-color: #085495;
+  font-family: 'Helvetica Neue Regular', Tahoma;
+}
+.menu1 ul {
+  float: right;
+}
+
+.menu2 ul {
+  float: right;
+  margin-right: 20px;
+}
+.menu1 ul li,
+.menu2 ul li {
+  display: inline;
+  width: 100px;
+  height: 42px;
+  padding-top: 26px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.menu1 a {
+  padding: 13px;
+  text-decoration: none;
+  color: #60b5ed;
+}
+.menu2 a {
+  text-decoration: none;
+  color: #60b5ed;
+}
+
+.menu2 a img {
+  position: absolute;
+  top: 7px;
+  right: 345px;
+}
+.menu2 li a {
+  color: white;
+}
+.image {
+  border-left: 1px solid #4eabda;
+  padding-top: 13px;
+  padding-right: 13px;
+  padding-bottom: 13px;
+  padding-left: 40px;
+}
+.nonimage {
+  padding: 13px;
+}
+.menu1 a:hover {
+  background-color: #4eabda;
+  color: white;
+}
+.menu2 a:hover {
+  background-image: linear-gradient(to bottom, #50afdc, #3584c9);
+  color: white;
+}
+.menu2 a span {
+  text-decoration: underline;
+}
+.upblock {
+  margin-top: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 560px;
+  height: 62px;
+  background-color: rgba(0, 0, 0,.5);
+  font-family: 'Helvetica Neue Regular', Tahoma;
+}
+.lowblock {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2px;
+  margin-bottom: 300px;
+  width: 560px;
+  height: 630px;
+  background-color: rgba(0, 0, 0,.5 );
+  font-family: 'Helvetica Neue Regular', Tahoma;
+}
+.upblock p {
+  padding-left: 210px;
+  padding-top: 20px;
+  color: white;
+  font-size: 25px;
+}
+.login {
+  padding-left: 140px;
+  padding-top: 34px;
+  padding-right: 141px;
+  text-align: center;
+  color: white;
+}
+.login .F,
+.login .log {
+  display: inline-block;
+  background-color: #3e5698;
+  border-top: 1px solid #7688b3;
+}
+.login .F {
+  width: 37px;
+  height: 34px;
+  border-right: 1px solid #37538d;
+  border-radius: 5px 0 0 5px;
+  font-weight: bolder;
+}
+.login .log{
+  width: 238px;
+  height: 34px;
+  margin-left: -4px;
+  border-left: 1px solid #7688b3;
+  border-radius: 0 5px 5px 0;
+}
+.log a {
+  text-decoration: none;
+  color: #fff;
+}
+.login .F p,
+.login .log p {
+  padding-top: 8px;
+}
+.log span {
+  font-weight: bold;
+}
+.line {
+  padding-left: 140px;
+  padding-top: 30px;
+}
+.line ul li {
+  display: inline-block;
+  color: #5d635c;
+}
+.line ul li:first-child {
+  width: 123px;
+  border-top: 1px solid #5b615a;
+  border-bottom: 1px solid black;
+  margin-bottom: 4px;
+}
+.line ul li:last-child {
+  width: 123px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #5b615a;
+  margin-bottom: 4px;
+}
+.first > input {
+  display: block;
+  margin-top: 30px;
+  margin-left: 140px;
+  width: 276px;
+  height: 35px;
+  padding-left: 10px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-bottom: 2px solid #2d302c;
+}
+.first > input:hover{
+  background-image: linear-gradient(to top, #1b5288, #2c5f8a);
+  border-bottom: 2px solid #4476a1;
+  box-shadow: 0 0 10px 0 #5ab5f6;
+}
+.last {
+  margin-left: 140px;
+  margin-top: 20px;
+  color: white;
+}
+.last span {
+  font-size: 14px;
+}
+.button > input {
+  display: block;
+  margin-top: 15px;
+  margin-left: 205px;
+  width: 150px;
+  height: 35px;
+  color: white;
+  font-size: 15px;
+  color: #000;
+  border: none;
+  border-radius: 2px;
+}
+.button > input:hover {
+  background-image: linear-gradient(to top, #317ec6, #61b9e3);
+  border-top: #61b9e3;
+  color: white;
+  box-shadow: 0 0 5px 0 #61b9e3;
+}
+.text {
+  margin-top: 22px;
+  margin-left: 120px;
+  color: white;
+  font-size: 12px;
+}
+.text p:last-child {
+  margin-top: 10px;
+  margin-left: 100px;
+}
