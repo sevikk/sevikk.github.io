@@ -15,17 +15,19 @@ body {
 }
 .menu {
   width: 100%;
-  height: 46px;
+  height: 44px;
   background-color: #085495;
   font-family: 'Helvetica Neue Regular', Tahoma;
 }
 .menu1 ul {
   float: right;
+  margin-top: 13px;
 }
 
 .menu2 ul {
   float: right;
   margin-right: 20px;
+  margin-top: 13px;
 }
 .menu1 ul li,
 .menu2 ul li {
@@ -41,10 +43,6 @@ body {
   text-decoration: none;
   color: #60b5ed;
 }
-.menu2 a {
-  text-decoration: none;
-  color: #60b5ed;
-}
 
 .menu2 a img {
   position: absolute;
@@ -55,8 +53,10 @@ body {
   color: white;
 }
 .image {
+  text-decoration: none;
+  color: #60b5ed;
   border-left: 1px solid #4eabda;
-  padding-top: 13px;
+  padding-top: 223px;
   padding-right: 13px;
   padding-bottom: 13px;
   padding-left: 40px;
@@ -131,12 +131,22 @@ body {
   text-decoration: none;
   color: #fff;
 }
-.login .F p,
+.F{
+  padding-top: 5px;
+}
+.login .F a {
+  font-size: 25px;
+  text-decoration: none;
+  color: white;
+}
 .login .log p {
   padding-top: 8px;
 }
 .log span {
   font-weight: bold;
+}
+.log {
+  padding-top: 5px;
 }
 .line {
   padding-left: 140px;
@@ -176,6 +186,11 @@ body {
   border-bottom: 2px solid #4476a1;
   box-shadow: 0 0 10px 0 #5ab5f6;
 }
+.first > input:focus {
+  background-image: linear-gradient(to top, #1b5288, #2c5f8a);
+  border-bottom: 2px solid #4476a1;
+  box-shadow: 0 0 10px 0 #5ab5f6;
+}
 .last {
   margin-left: 140px;
   margin-top: 20px;
@@ -192,14 +207,14 @@ body {
   height: 35px;
   color: white;
   font-size: 15px;
-  color: #000;
+  color: #fff;
   border: none;
   border-radius: 2px;
+  background-image: linear-gradient(to top, #317ec6, #61b9e3);
 }
 .button > input:hover {
   background-image: linear-gradient(to top, #317ec6, #61b9e3);
   border-top: #61b9e3;
-  color: white;
   box-shadow: 0 0 5px 0 #61b9e3;
 }
 .text {
