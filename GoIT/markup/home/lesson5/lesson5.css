@@ -191,28 +191,30 @@ body {
   border-bottom: 2px solid #4476a1;
   box-shadow: 0 0 10px 0 #5ab5f6;
 }
-.last {
+.first p {
   margin-left: 140px;
   margin-top: 20px;
   color: white;
-}
-.last span {
   font-size: 14px;
 }
-.button > input {
+.button a {
   display: block;
   margin-top: 15px;
   margin-left: 205px;
-  width: 150px;
-  height: 35px;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 136px;
+  height: 27px;
   color: white;
   font-size: 15px;
   color: #fff;
+  font-family: 'Helvetica Neue Regular', Tahoma;
+  text-decoration: none;
   border: none;
   border-radius: 2px;
   background-image: linear-gradient(to top, #317ec6, #61b9e3);
 }
-.button > input:hover {
+.button a:hover {
   background-image: linear-gradient(to top, #317ec6, #61b9e3);
   border-top: #61b9e3;
   box-shadow: 0 0 5px 0 #61b9e3;
