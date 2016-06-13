@@ -95,9 +95,10 @@
     margin: 9px 0 0 18px;
     border: 1px solid grey;
     border-radius: 50px 50px 50px 50px;
--moz-border-radius: 50px 50px 50px 50px;
--webkit-border-radius: 50px 50px 50px 50px;
-border: 1px solid #5e5b5e;
+    -webkit-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    border: 1px solid #5e5b5e;
 }
 .upmenu img {
     padding-left: 8px;
@@ -117,9 +118,9 @@ border: 1px solid #5e5b5e;
     height: 33px;
     margin-top: 4px;
     font-family: 'LucidaSansUnicode';
-    -webkit-box-shadow: inset 0px 1px 8px -1px rgba(240, 240, 240, 1);
-    -moz-box-shadow: inset 0px 1px 8px -1px rgba(240, 240, 240, 1);
-    box-shadow: inset 0px 1px 8px -1px rgba(240, 240, 240, 1);
+    -webkit-box-shadow: 3px 7px 15px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,1);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,1);
 }
 
 .navleft ul {
@@ -248,9 +249,7 @@ border: 1px solid #5e5b5e;
     width: 149px;
     border: 1px solid #949fa4;
     border-radius: 12px;
-    -webkit-box-shadow: 4px 3px 8px -4px rgba(0, 0, 0, 1);
-    -moz-box-shadow: 4px 3px 8px -4px rgba(0, 0, 0, 1);
-    box-shadow: 4px 3px 8px -4px rgba(0, 0, 0, 1);
+
 }
 
 .filter img {
@@ -286,7 +285,6 @@ border: 1px solid #5e5b5e;
 
 
 .sidebarli a:hover {
-
   font-size: 13px;
   text-decoration: underline;
   font-weight: bold;
@@ -309,6 +307,9 @@ border: 1px solid #5e5b5e;
     border-radius: 15px;
     border-style: none;
     margin: 13px 23px;
+    -webkit-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
 }
 
 .sidebar button:hover {
@@ -436,6 +437,7 @@ footer {
 
 a.footerborder {
     border-right: 1px solid transparent;
+
 }
 
 footer ul {
@@ -445,27 +447,34 @@ footer ul {
 
 footer li {
     display: inline-block;
+
 }
 
 .footer {
     text-align: center;
-
 }
 
 footer li a {
+    display:block;
     background-color: #213a4d;
     color: #bec6c9;
     text-decoration: none;
-    font-size: 13px;
-    padding: 1px 5px;
+    font-size: 12px;
     border-right: 2px solid #7f8e97;
     font-family: 'LucidaSansUnicode', Arial;
-    margin-left: 1px;
+    line-height: 10px;
+    margin-left: -2px;
+    margin-right: -2px;
+    padding-left: 11px;
+    padding-right: 11px;
 }
 
 footer li a:hover {
     cursor: pointer;
     color: #52abcb;
+}
+footer li:nth-child(2){
+  margin-right: 2px;
 }
 
 .copyright{
