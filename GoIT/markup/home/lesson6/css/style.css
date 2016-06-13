@@ -211,12 +211,16 @@
   margin-left: 217px;
   margin-top: 10px;
 }
+aside {
+  float: left;
+}
+section {
+  float: left;
+}
 .sidebar {
-    /*width: 181px;*/
     float: left;
     width: auto;
     position: relative;
-
 }
 
 .sidebartitle {
@@ -303,13 +307,16 @@
 }
 
 .sidebar button {
+    width: 82px;
+    height: 26px;
     background-color: #195779;
     border-radius: 15px;
     border-style: none;
-    margin: 13px 23px;
+    margin: 12px 23px;
     -webkit-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
     -moz-box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
     box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.33);
+    background: linear-gradient(to bottom, #3a748e, #2b4b69);
 }
 
 .sidebar button:hover {
@@ -318,7 +325,7 @@
 
 .sidebar button span {
     color: #e5e9ea;
-    font-size: 13px;
+    font-size: 12px;
     display: inline-block;
     padding: 0px 6px;
     font-family: 'LucidaSansUnicode', Arial;
