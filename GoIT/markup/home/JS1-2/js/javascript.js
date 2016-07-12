@@ -1,12 +1,26 @@
-function pow(){
 
-var a = prompt('Set an base', '');
+var a = prompt('Set a base', '');
 var b = prompt('Set an exponent', '');
-console.log (Math.pow(a ,b));
+
+function pow(){
+if (a >= 1){
+  console.log('base is ' + a);
+} else if ( a == ""){
+  console.log ('Enter cancelled');
+} else {
+  console.log (' cancelled');
 }
 
+if (b>=1){
+  console.log('exponent is ' + b);
+} else if (b == ""){
+  console.log ('Enter cancelled');
+} else {
+  console.log('cancelled')
+}
+console.log (Math.pow(a ,b));
+}
 pow();
-
 
 var arr = [];
 
@@ -20,25 +34,23 @@ arr[4] = prompt('Enter fifth name', '');
 var enterName = prompt('Enter name', '');
 
 if (enterName == arr[0]) {
-  var name = enterName;
-   alert(name + ', you are login');
+   alert(enterName + ', you are login');
  }
   else if (enterName == arr[1]) {
-     var name = enterName
-     alert(name + ', you are login');
+     alert(enterName + ', you are login');
    }
     else if (enterName == arr[2]) {
-       var name = enterName
-       alert(name + ', you are login');
+       alert(enterName + ', you are login');
      }
       else if (enterName == arr[3]) {
-         var name = enterName
-         alert(name + ', you are login');
+         alert(enterName + ', you are login');
        }
         else if (enterName == arr[4]) {
-           var name = enterName
-           alert(name + ', you are login');
- } else {
-   var name = enterName
-   alert(name + ' not found');
+           alert(enterName + ', you are login');
+ }
+ else if (enterName == ""){
+   alert(enterName + 'no name');
+ }
+ else {
+   alert(' try again');
  }
