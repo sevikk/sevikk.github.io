@@ -51,6 +51,9 @@ if (enterName == arr[0]) {
  else if (enterName == ""){
    alert(enterName + 'no name');
  }
+ else if(enterName == null){
+   alert('null check');
+ }
  else {
    alert(' try again');
  }
