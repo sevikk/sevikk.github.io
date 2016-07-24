@@ -26,7 +26,7 @@ function start_click() {
   clearInterval(timerId);
   go=0;
   start.removeAttribute('value');
-  start.setAttribute('value', 'Continue');
+  start.setAttribute('value', 'Start');
 }
 }
 
