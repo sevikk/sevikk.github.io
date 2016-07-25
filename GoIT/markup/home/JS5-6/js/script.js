@@ -20,7 +20,7 @@ function start_click() {
     if (  hours<10) {hours = "0" + hours;};
     var str = hours + ":" + min + ":" + sec + ":" + msec;
     for_count.innerHTML = str;
-  }, 1)
+  }, 10)
     go=1;
   } else {
   clearInterval(timerId);
