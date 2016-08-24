@@ -1,0 +1,74 @@
+*{
+  margin: 0;
+  padding: 0
+}
+.wrapper {
+  padding: 50px 0 0 300px;
+
+}
+
+.carousel-hider {
+    width: 400px;
+    overflow: hidden;
+    float: left;
+}
+
+.carousel-list {
+    list-style: none;
+    width: 10000px;
+    padding: 0px;
+    position: relative;
+}
+
+.carousel-element {
+    display: block;
+    margin-right: 25px;
+    float: left;
+}
+
+.carousel-element img {
+    max-width: 400px;
+    border-radius: 3px;
+}
+.carousel-element p {
+  text-align: center;
+}
+
+.carousel-arrow-left, .carousel-arrow-right {
+    float: left;
+}
+.carousel-arrow-left, .carousel-arrow-right {
+    float: left;
+    display: block;
+    border: 1px solid grey;
+    background: rgb(198, 191, 187);
+    background: -webkit-linear-gradient(180deg, rgb(198, 191, 187) 25%, rgb(196, 212, 235) 100%);
+    background: -o-linear-gradient(180deg, rgb(198, 191, 187) 25%, rgb(196, 212, 235) 100%);
+    background: -ms-linear-gradient(180deg, rgb(198, 191, 187) 25%, rgb(196, 212, 235) 100%);
+    background: linear-gradient(180deg, rgb(198, 191, 187) 25%, rgb(196, 212, 235) 100%);
+    padding: 5px;
+    margin-top: 150px;
+    border-radius: 3px;
+}
+
+.carousel-arrow-left:hover, .carousel-arrow-right:hover {
+    cursor: pointer;
+    background: rgb(17, 142, 199);
+    background: -webkit-linear-gradient(180deg, rgb(17, 142, 199) 0%, rgb(215, 238, 248) 100%);
+    background: -o-linear-gradient(180deg, rgb(17, 142, 199) 0%, rgb(215, 238, 248) 100%);
+    background: -ms-linear-gradient(180deg, rgb(17, 142, 199) 0%, rgb(215, 238, 248) 100%);
+    background: linear-gradient(180deg, rgb(17, 142, 199) 0%, rgb(215, 238, 248) 100%);
+}
+
+.carousel-arrow-left {
+    margin-right: 25px;
+}
+
+.carousel-arrow-right {
+    margin-left: 25px;
+}
+
+.article {
+  clear: both;
+  margin: 20px;
+}
