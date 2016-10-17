@@ -7,7 +7,7 @@ var obj = {
 header: "Programming test",
 
 questions:[
-     {title:"сколько будет 2 умноженое на 2",
+     {title:"сколько будет 2 умноженое на 2?",
       chekboxName:["one","two","three"],
       id:["1","2","3"],
       answers:["3","5","4"],

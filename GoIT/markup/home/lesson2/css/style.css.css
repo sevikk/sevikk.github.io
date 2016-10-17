@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  }
+body {
+  background-color: lightgrey;
+  font-family: 'Open Sans', sans-serif;
+  }
+.allbody {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 1000px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px 2px grey;
+  }
+.logo {
+   position: absolute;
+   top: 50px;
+   left: 40px;
+  }
+.header {
+  position: absolute;
+  top: 130px;
+  left: 40px;
+  width: 1010px;
+  height: 40px;
+  background: linear-gradient(to top, #454444, #5c5c5c);
+  font-size: 13px;
+  }
+.hcontent li {
+  float:left;
+  list-style: none;
+  }
+.button {
+  display: inline-block;
+  height: 28px;
+  width: 100px;
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 32px;
+  cursor: pointer;
+	vertical-align: middle;
+  color: white;
+  text-shadow: 1px 1px 1px grey;
+  }
+.button a {
+    text-decoration: none;
+    color: white;
+    display: inline;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    padding-top: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 1px  grey;
+
+  }
+.button a:hover {
+    background-color: black;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  }
+
+.sidebar {
+    position: absolute;
+    top: 210px;
+    left:40px;
+    width: 219px;
+    height: 246px;
+    background-color: white;
+    font-size: 11px;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+  }
+
+.scontent li {
+    float: left;
+    list-style: none;
+  }
+.buttonsc {
+    display: block;
+    height: 25px;
+    width: 200px;
+    padding-left: 20px;
+    padding-top: 15px;
+    border-bottom: 1px solid grey;
+    color: grey;
+    cursor: pointer;
+  	vertical-align: middle;
+  }
+.buttonsc a {
+  text-decoration: none;
+  color: grey;
+  padding-top: 11px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.buttonsc a:hover {
+  position: relative;
+  left: 20px;
+  color: black;
+}
+.buttonsc:hover {
+  background-color: lightgrey;
+  border-right: 1px solid grey;
+}
+
+.bicycle {
+   position: absolute;
+   top: 210px;
+   left: 372px;
+ }
+
+.text {
+    float: right;
+    width: 650px;
+    margin-top: 650px;
+    margin-right: 60px;
+    font-size: 14px;
+  }
+
+.footer {
+    position: absolute;
+    top: 900px;
+    left: 40px;
+    width: 1010px;
+    height: 40px;
+    background-color: #e1e1e1;
+  }
+.fcontentli {
+     display: inline-block;
+     padding-left: 18px;
+     padding-top: 8px;
+     padding-right: 32px;
+     height: 32px;
+     width: 100px;
+     cursor: pointer;
+   	 vertical-align: middle;
+     list-style: none;
+     color: black;
+
+   }
+.fcontent li a {
+     text-decoration: none;
+     color: black;
+     font-size: 13px;
+   }
+.fcontentli a:hover {
+  text-decoration: underline;
+}
+
+.fcontent li:last-child {
+    float: right;
+    font-size: 13px;
+    list-style: none;
+    padding-top: 12px;
+    padding-right: 18px;
+   }

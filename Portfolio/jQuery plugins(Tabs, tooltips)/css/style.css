@@ -3,7 +3,7 @@
   margin: 0;
 }
 #tabs .tabs {
-  width: 386px;
+  width: 384px;
   margin-left: 20px;
   margin-top: 10px;
   overflow: hidden;
@@ -27,7 +27,7 @@
 #tabs .tabs li a.active,
 #tabs .tabs li a:hover {
   color: white;
-  text-decoration: none;;
+  text-decoration: none;
   background-color: #dc143c;
 }
 
