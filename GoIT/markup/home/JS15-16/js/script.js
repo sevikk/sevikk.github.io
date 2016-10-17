@@ -85,4 +85,8 @@ var newStudent = new Student();
 
 console.log('Student', Student)
 console.log('newStudent', newStudent);
+<<<<<<< HEAD
 console.log('newStudent.sex', newStudent.sex);
+=======
+console.log('newStudent.sex', newStudent.sex);
+>>>>>>> 5c1f6663d5ca3c2917b8f76272c424b17714362d
