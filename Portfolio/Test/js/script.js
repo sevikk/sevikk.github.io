@@ -58,7 +58,7 @@ function showModal(e){
      for (var i=0; i<retObj.questions.length;i++){
           correct[i] = retObj.questions[i].correct;
           if($(answer[i]).attr('id')==correct[i]){
-            modal.append('<p class="correct">Вы прошли тест успешно!</p>');
+            modal.append('<p class="correct">Тест пройден!</p>');
      } else {
           modal.append('<p class="incorrect">Тест не пройден. Пропробовать еще раз?</p>');
      }
