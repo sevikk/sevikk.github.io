@@ -1,0 +1,61 @@
+
+.services {
+    background-color: $servicesBckg;
+    padding: 40px 0;
+}
+
+.services_title {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 25px;
+    color: $white;
+    margin-bottom: 20px;
+}
+
+.services_title {
+    display: block;
+}
+
+.services_box {
+    display: inline-block;
+    width: 260px;
+}
+
+.services_box__img {
+    height: 260px;
+    width: 260px;
+}
+
+.services_box_description {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: $white;
+    display: block;
+    text-align: center;
+}
+
+.marg_r {
+    margin-right: 34px;
+}
+
+.services_hover {
+    width: 260px;
+    height: 260px;
+    display: none;
+    content: "";
+    position: absolute;
+    opacity: 0.5;
+    background-color: $servicesHov;
+    background: url(../images/plusforhover.png) no-repeat #248cec;
+    background-position: center;
+}
+
+.services_box:hover .services_hover {
+	cursor: pointer;
+    display: block;
+}
+
+.services_box:hover .services_box_description {
+    color: $servicesBoxHov;
+    cursor: pointer;
+}

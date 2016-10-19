@@ -1,0 +1,58 @@
+.shelude{
+	padding: 20px 0;
+}
+
+.shelude_box{
+	margin: 20px 0;
+	float: left;
+	width: 32%;
+	position: relative;
+}
+
+.shelude_box__number{
+	font-family: 'ubuntu medium', sans-serif;
+	font-size: 90px;
+	color: rgba(42,43,46,0.2);
+}
+
+.shelude_box__img{
+	margin-top: 32px;
+    position: absolute;
+    margin-left: 43px;
+}
+
+.shelude_box__title{
+	font-family: 'ubuntu medium', sans-serif;
+	color: $black;
+	font-size: 19px;
+    margin-left: 43px
+}
+
+.shelude_box__text{
+	font-family: Arial, sans-serif;
+	color: $boxTextColor;
+	font-size: 12px;
+	margin-left: 151px;
+}
+
+.shelude_box__more{
+	font-family: 'ubuntu medium', sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: $black;
+	margin-left: 151px;
+
+	&:hover{
+		color: $readMoreHover;
+		cursor: pointer;
+		text-decoration: none;
+	}
+}
+
+.shelude_box__arrow{
+	color: $readMoreHover;
+
+	&:hover{
+		color:$black;
+	}
+}

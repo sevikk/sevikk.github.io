@@ -1,0 +1,106 @@
+
+.news_wrap{
+    float: left;
+    width: 50%;
+}
+
+.news {
+    margin-bottom: 60px;
+    display: block;
+}
+
+.news_title {
+    color:#2a2d32;
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.maincontent {
+    padding: 40px 0;
+    background-color: $mainContentBckg;
+}
+
+.newsarticle {
+    position: relative;
+    margin-top: 10px;
+}
+
+.calendar_date {
+    width: 40px;
+    height: 40px;
+    background-color: $calendDateBckg;
+    color: $white;
+    position: absolute;
+    z-index: 999;
+    margin: 20px 0 0 -17px;
+}
+
+.calendar_month {
+    width: 40px;
+    height: 40px;
+    background-color: $calendMonthBckg;
+    color: $black;
+    position: absolute;
+    z-index: 999;
+    margin: 60px 0 0 -17px;
+}
+
+.newsarticle_img {
+    position: absolute;
+    z-index: 1;
+}
+
+.month,
+.date {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 13px;
+    display: block;
+    margin: 9px auto;
+    text-align: center;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.news_header {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    color: $newsCol;
+    display: block;
+    margin-left: 175px;
+    &:hover {
+        color: $newsHeaderHov;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
+.news_comments {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 13px;
+    color: #aaa;
+    margin-left: 175px;
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+.news_text {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-left: 175px;
+    color: $newsText;
+}
+
+.commentator {
+    color: $comments;
+}
+
+.comments_number {
+    color: $comments;
+}
+

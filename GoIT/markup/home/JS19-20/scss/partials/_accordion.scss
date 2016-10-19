@@ -1,0 +1,56 @@
+.accordion {
+    float: right;
+    width: 50%;
+    padding: 24px 5px 0 16px;
+    h4 {
+        font-family: 'ubuntu medium', Arial, sans-serif;
+        font-size: 16px;
+        font-weight: lighter;
+        background-color: $white;
+        padding: 10px 0 10px 0;
+        margin-top: 5px;
+        margin-bottom: 0;
+        border: 1px solid $AccPanelBord;
+        &:hover {
+            background-color: $AccPanelHov;
+            border: 1px solid transparent;
+            color: $white;
+            cursor: pointer;
+        }
+    }
+    .active {
+        color: #white;
+        background: $activeAccBckg;
+        border: 1px solid transparent;
+        .plus:after {
+            content: '\2013';
+            padding-right: 1px;
+        }
+    }
+}
+
+.accordion_text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: $accText;
+    padding: 20px 10px 10px 40px;
+    display: none;
+}
+
+.plus {
+    padding: 10px 15px 10px 15px;
+    border-right: 1px solid $plusBord;
+    margin-right: 10px;
+    &:after {
+        content: "+";
+    }
+}
+
+.accordion_title {
+    color: $AccTitle;
+    display: block;
+    font-family: 'ubuntu medium', Arial, sans-serif;
+    font-size: 27px;
+    margin-bottom: 20px;
+    margin-top: -22px;
+}

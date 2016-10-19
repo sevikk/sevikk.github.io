@@ -1,0 +1,55 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body, html{
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    /*min-width: 320px;*/
+    font: normal #{$fontSize-small}/#{$lineHeight-base} $font-base;
+    color: $black;
+    /*@media #{$large-up} {
+        font-size: $fontSize-base;
+    }*/
+}
+
+a{
+    text-decoration:none;
+}
+
+.wrapper{
+    display: table;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    min-width: 1060px;
+}
+
+.w1{
+    display: table-row;
+    height: 100%;
+}
+
+.container{
+    width: 1190px;
+    margin: 0 auto;
+    padding: 0px 15px;
+    height: auto;
+}
+
+.container_slider{
+   width: 1160px;
+    margin: 0 auto;
+    padding: 0;
+    height: auto;  
+}
+
+.firstsec{
+    background-color: $white;
+}

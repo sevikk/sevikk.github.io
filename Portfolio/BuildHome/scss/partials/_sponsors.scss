@@ -1,0 +1,18 @@
+.sponsors{
+	background-color: white;
+	padding: 80px 0;
+}
+
+.sponsors img{
+	vertical-align: middle;
+}
+
+.sponsors_img{
+	margin: 0 16px;
+
+	&:hover{
+		opacity: 0.5;
+		cursor: pointer;
+		transition: 0.7s all;
+	}
+}

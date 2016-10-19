@@ -1,0 +1,96 @@
+
+
+.footer {
+    overflow: hidden;
+    background-color: $footerBckg;
+}
+
+.footermenu {
+    padding: 20px 0 35px;
+}
+
+.footermenu_section {
+    width: 25%;
+    float: left;
+    list-style: none;
+}
+
+.footermenu_section li {
+    border-bottom: 1px solid $footerLink;
+}
+
+.footermenu_section__title {
+    font-family: 'ubuntu medium', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: $white;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.footermenu_section__link {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: $footerLink;
+    text-decoration: none;
+    line-height: 2.5;
+    &:hover {
+        color: $footerLinkHov;
+        transition: 0.5s all;
+        cursor: pointer;
+    }
+}
+
+.footercontacts {
+    position: relative;
+    padding: 5px 0;
+    background-color: $footerContBckg;
+}
+
+.footercontacts_wrap {
+    list-style: none;
+}
+
+.footercontacts_wrap li {
+    float: left;
+}
+.footercontacts_wrap li:hover {
+    cursor: pointer;
+    transition: 0.5s all;
+    opacity: 0.7;
+}
+
+.footercontacts_wrap li:last-child {
+    float: right;
+}
+
+.footercontacts_wrap li:last-child:hover{
+	cursor: default;
+    transition: 1;
+    opacity: 1;
+}
+
+.footercontacts_wrap__link {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-right: 34px;
+    margin-left: 15px;
+    color: $footerLink;
+}
+
+.footer_icon {
+    position: absolute;
+}
+
+.footer_icon__location {
+    margin: 3px 0 0 -4px;
+}
+
+.footer_icon__iphone {
+    margin: 5px 0 0 -5px;
+}
+
+.footer_icon__email {
+    margin: 7px 0px 0px -9px;
+}
