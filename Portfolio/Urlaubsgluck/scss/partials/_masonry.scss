@@ -1,0 +1,57 @@
+.section__for__masonry {
+  @media#{$medium-up}{
+    width: 745px;
+    margin: 0 auto 88px;
+  }
+  @media#{$xlarge-up}  {
+    width: 945px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 22px;
+    padding: 0 20px;
+    color: $dark-grey;
+    padding-bottom: 12px;
+    @media#{$medium-up}{
+      text-align: center;
+      margin-bottom: 35px;
+      padding: 0;
+    }
+  }
+}
+.grid-item {
+  margin: 0 auto 10px;
+  width: 95%;
+  height: 120px;
+  border-radius: 5px;
+  overflow: hidden;
+  img {
+    display: block;
+  }
+  h2 {
+     position: absolute;
+     top: 30%;
+     width: 100%;
+     text-align: center;
+     color: $white;
+     font-size: 22px;
+     font-family: "Montserrat", sans-serif;
+   }
+  @media#{$medium-up}{
+    width: 30%;
+    height: 310px;
+  }
+}
+.grid-sizer{
+  @media#{$medium-up}{
+    width: 30%;
+    height: 310px;
+  }
+}
+.grid-item:nth-child(5),
+ .grid-item:nth-child(6) {
+   @media#{$medium-up}{
+     width: 61.5%;
+     height: 310px;
+   }
+ }

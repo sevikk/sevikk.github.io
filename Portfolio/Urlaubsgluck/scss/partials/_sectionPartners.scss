@@ -1,0 +1,123 @@
+.partners {
+  text-align: center;
+  @media#{$medium-up}{
+    padding-top: 60px;
+    width: 565px;
+    margin: 0 auto;
+  }
+  @media#{$large-up}{
+    width: 940px;
+  }
+    h3 {
+    padding: 23px 20px 10px 20px;;
+    letter-spacing: 1px;
+    @media#{$medium-up}{
+      margin-bottom: 28px;
+
+    }
+  }
+  @media#{$medium-up}{
+    margin-bottom: 82px;
+    text-align: center;
+  }
+}
+.partners__item {
+  margin-bottom: 31px;
+  a {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 17px;
+    width: 120px;
+    height: 120px;
+  }
+  h4 {
+    text-align: center;
+  }
+  p {
+    margin: 13px auto;
+    font-family: "Roboto", sans-serif;
+    line-height: 15px;
+    text-align: center;
+    width: 220px;
+    color: $grey;
+  }
+  @media#{$medium-up}{
+    display: inline-block;
+    vertical-align: top;
+    width: 230px;
+    margin-bottom: 44px;
+  }
+}
+.partners__item__photo{
+  border-radius: 50%;
+  position: relative;
+  width: 123px;
+  height: 123px;
+}
+.partners__item__photo:after{
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 40px;
+  height: 40px;
+}
+.item-1{
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -5px;
+}
+.item-1:after {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -574px;
+}
+.item-2  {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -270px;
+}
+.item-2:after {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -6px -674px;
+}
+.item-3  {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -137px;
+}
+.item-3:after {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -624px;
+}
+.item-4  {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -404px;
+}
+.item-4:after {
+  background: url("../img/spritesheet.png") no-repeat;
+  background-position: -5px -724px;
+}
+.partners__submit{
+  font-weight: bold;
+  background: none;
+  outline: none;
+  color: $red;
+  padding: 9px 80px;
+  border-radius: 25px;
+  margin: 0 auto 30px;
+  text-align: center;
+  display: block;
+  border: 2px solid $red;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover{
+    color: $white;
+    background: $red;
+    }
+  @media#{$medium-up}{
+    padding: 10px 28px;
+  }
+}
+.partners__item:nth-child(3),
+.partners__item:nth-child(4) {
+  @media#{$medium-up}{
+    margin-bottom: 17px;
+  }
+}
