@@ -1,0 +1,157 @@
+.centerblock{
+	float: left;
+	width: 795px;
+}
+
+.product_wrap{
+	float: left;
+	width: 245px;
+	border: 1px solid #e4e4e4;
+}
+
+.product{
+	outline: none;
+}
+
+.product:hover{
+	text-decoration:none;
+}
+
+.side_marg{
+	margin: 0 25px;
+}
+
+.bot_marg{
+	margin-bottom: 20px;
+}
+
+.wrap{
+	outline: none;
+	padding: 15px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.product_img{
+	background: #f7f7f7;
+    display: block;
+    img{
+    	display: block;
+    padding: 42px 0;
+    margin: 0 auto;
+    }
+}
+
+.product_descr{
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-align: center;
+	color:#7f7f7f;
+	padding: 22px 0 7px;
+
+}
+
+.product_price{
+	display: block;
+	padding: 15px;
+	font-family: 'Arimo', sans-serif;
+	font-size: 28px;
+	color:#444444;
+	font-weight: bold;
+	a{
+		outline: none;
+	}
+	img{
+		margin-top: 4px;
+		float: right;
+	}
+}
+
+.centerblock_slider{
+	border-bottom: 1px solid #777777;
+}
+
+.centerblock_slider-element{
+	outline: none;
+}
+
+.centerblock_article_box{
+	padding-top: 45px;
+	margin-bottom: 90px;
+}
+
+.centerblock_article{
+	width: 49%;
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	color:#767676;
+	display: inline-block;
+}
+
+.centerblock_slider-mobile{
+	display: none;
+}
+
+@media(max-width: 1240px) {
+    
+}
+
+@media(max-width: 960px){
+    .side_marg {
+    margin: 0 8px;
+}
+.product_price {
+    font-size: 23px;
+    img{
+    	margin-top: 2px;
+    }
+}
+
+}
+
+@media(max-width: 768px){
+	
+	.centerblock{
+		width: 460px;
+		float: none;
+		margin: 0 auto;
+		margin-bottom: 120px;
+	}
+
+	.centerblock_slider-mobile{
+		display: block;
+	}
+     .centerblock_slider{
+     	display: none;
+     }
+     .centerblock_article_box{
+     	display: none;
+     	margin-bottom: 15px;
+     }
+
+     .centerblock_slider-mobile--element{
+     	outline: none;
+     }
+
+     .product_wrap{
+     	float: none;
+     	margin: 0 auto;
+     }
+}
+
+@media(max-width: 460px){
+     .centerblock{
+     	width: 320px;
+     }
+     .product_descr{
+     	font-size: 12px;
+     }
+
+     .product_price{
+     	font-size: 19px;
+     	img{
+     		margin-top: 0;
+     	}
+     }
+}

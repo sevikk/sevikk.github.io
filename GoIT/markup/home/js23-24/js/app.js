@@ -1,33 +1,76 @@
-requirejs.config({
-	paths: {
-		'jquery': 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min',
-		'tmpl':'tmpl',
-		'model': 'model',
-		'view':'view',
-		'controller':'controller'
-	},
-	shim: {
-	  'tmpl':{},
-	  'jquery':{
-	    exports: 'jQuery'
-	  },
-	  'model':{},
-	  'view':{},
-	  'controller':{
-	    deps:[],
-	    exports: 'controller'
-	  }
-	}
-});
 
-require(
-	[ 'model','view', 'controller', 'jquery', 'tmpl'],
-	function ($, tmpl, model, view, controller) {
-		$(function(){
-	    var firstToDoList = ['learn javascript', 'learn html', 'drink coffee'];
-	    var model = new Model(firstToDoList);
-	    var view = new View(model);
-	    var controller = new Controller(model, view);
-		});
-	}
-);
+function Model(data) {
+    var self = this;
+    self.data = data;
+    self.addItem = function(item) {
+        if (item.length === 0){
+            return;
+        }
+        self.data.push(item);
+        return self.data;
+    };
+
+    self.removeItem = function(item) {
+        var index = self.data.indexOf(item);
+        if (index === -1){
+            return;
+        }
+        self.data.splice(index, 1);
+        return self.data;
+    };
+};
+
+function View(model){
+    var self = this;
+    function init(){
+        var wrapper = tmpl($('#wrapper-template').html());
+        $('body').append(wrapper);
+        self.elements = {
+            input: $('.item-value'),
+            addBtn: $('.item-add'),
+            listContainer: $('.item-list')
+        };
+        self.renderList(model.data);
+    };
+    self.renderList = function(data) {
+        var list = tmpl($('#list-template').html(), {data: data});
+        self.elements.listContainer.html(list);
+    };
+    init();
+};
+
+function Controller(model, view){
+    var self = this;
+    view.elements.addBtn.on('click', addItem);
+    view.elements.listContainer.on('click', '.item-delete', removeItem)
+    function addItem() {
+        var newItem = view.elements.input.val();
+        model.addItem(newItem);
+        view.renderList(model.data);
+        view.elements.input.val('');
+    }
+
+    function removeItem(){
+        var item = $(this).attr('data-value');
+        model.removeItem(item);
+        view.renderList(model.data);
+    }
+
+    function editItem() {
+    var item = $(this).attr('data-value');
+    var idItem = document.getElementById(item);
+    idItem.setAttribute('contenteditable', 'true');
+    idItem.onblur = function () {
+      idItem.setAttribute('contenteditable', 'false');
+      model.data.splice(item, 1, document.getElementById("list-wrapper").getElementsByTagName("li")[item].textContent);
+    }
+  }
+
+};  
+
+$(function(){
+    var firstToDoList = ['learn javascript', 'learn html', 'drink coffee'];
+    var model = new Model(firstToDoList);
+    var view = new View(model);
+    var controller = new Controller(model, view);
+});
