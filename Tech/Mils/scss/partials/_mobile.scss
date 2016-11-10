@@ -1,0 +1,102 @@
+@media (max-width: 767px) {
+
+    .portfolio-container .tablet-js {
+        display: none;
+    }
+
+    .portfolio-container .desktop-js {
+        display: none;
+    }
+
+    .portfolio-container .mobile-js {
+        display: block;
+    }
+
+    .portfolio-container .portfolio-title {
+        font: 300 14px/24px Roboto, sans-serif;
+    }
+
+    .portfolio-container .portfolio-title span {
+        display: block;
+    }
+
+    .portfolio-container .portfolio {
+        width: 320px;
+        margin: auto;
+        overflow: visible;
+    }
+
+    .portfolio-container .portfolio .slick-track>div {
+        height: 320px;
+        position: relative;
+    }
+
+    .portfolio-container .portfolio .slick-track [data-image] {
+        height: 300px;
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container {
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        padding: 0;
+    }
+
+    .portfolio-container .portfolio>div .slick-slide.slick-active.mobile-preview .title {
+        opacity: 1;
+        -webkit-transition: opacity 1.5s ease-in;
+        -moz-transition: opacity 1.5s ease-in;
+        -o-transition: opacity 1.5s ease-in;
+        transition: opacity 1.5s ease-in;
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container .title>div:first-child {
+        position: relative;
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container .title>div {
+        display: inline-block;
+        padding: 10px 30px;
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container .title>div h4 {
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+        font-size: 18px;
+        color: #FFF;
+        font-family: inherit;
+        line-height: 1.1;
+        font-family: Roboto, sans-serif;
+        font-weight: 200;
+
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container .title>div:first-child:after {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        content: "+";
+        margin: 0;
+        margin-top: -10px;
+        color: #8c8c8c;
+        font-size: 35px;
+        line-height: 18px;
+        font-weight: 100;
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container:after {
+        clear: both;
+
+    }
+
+    .portfolio-container .portfolio .slick-track>div .description-container:before, 
+    .portfolio-container .portfolio .slick-track>div .description-container:after {
+        content: " ";
+        display: table;
+    }
+
+}

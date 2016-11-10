@@ -1,0 +1,193 @@
+.portfolio .slick-dots {
+    position: relative;
+    top: 20px;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+    li {
+
+        position: relative;
+        display: inline-block;
+        width: 36px;
+        height: 20px;
+        margin: 0 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        button {
+            font-size: 0;
+            line-height: 0;
+            display: block;
+            cursor: pointer;
+            color: transparent;
+            border: 0;
+            outline: none;
+        }
+    } 
+}
+
+.portfolio .slick-dots>li.slick-active {
+    border: 1px solid #b7b079;
+    -webkit-transition: border 1s;
+    -moz-transition: border 1s;
+    -o-transition: border 1s;
+    transition: border 1s;
+}
+
+
+.slick-prev, 
+.slick-next {
+    position: absolute;
+    display: block;
+    height: 20px;
+    width: 20px;
+    line-height: 0;
+    font-size: 0;
+    cursor: pointer;
+    background: 0 0;
+    color: transparent;
+    top: 50%;
+    margin-top: -10px;
+    padding: 0;
+    border: none;
+    outline: 0;
+
+}
+
+
+
+.slick-slider {
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    display: none;
+}
+
+
+.portfolio-container .portfolio .slick-list {
+    width: 1200px;
+    margin: auto;
+    overflow: visible;
+}
+
+.slick-slider .slick-list, 
+.slick-track, .slick-slide, 
+.slick-slide img {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    zoom: 1;
+    opacity: 1;
+    width: 6000px;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+
+.portfolio-container .portfolio>div .slick-slide.slick-active {
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    -o-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+}
+
+.portfolio-container .portfolio>div .slick-slide {
+    opacity: .2;
+    -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    -o-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+
+    .portfolio-container .portfolio .slick-dots>li:nth-child(odd) {
+        width: 20px;
+        height: 22px;
+        background: url(../images/bullet-big-bg.png) center no-repeat;
+    }
+
+    .portfolio-container .portfolio .slick-dots>li:nth-child(even) {
+        width: 14px;
+        height: 22px;
+        background: url(../images/bullet-small-bg.png) center no-repeat;
+    }
+}
+
+@media (max-width: 767px) {
+    
+    .portfolio-container .portfolio .slick-prev, 
+    .portfolio-container .portfolio .slick-next {
+        top: auto;
+        padding: 2.5px;
+    }
+
+    .portfolio-container .portfolio .slick-prev {
+        bottom: -10px;
+        left: 20px;
+        z-index: 9;
+    }
+
+    .portfolio-container .portfolio .slick-prev.slick-disabled, 
+    .portfolio-container .portfolio .slick-next.slick-disabled {
+        opacity: .2;
+    }
+
+    .portfolio-container .portfolio .slick-next {
+        bottom: -10px;
+        right: 20px;
+    }
+
+    .portfolio-container .portfolio .slick-prev img, 
+    .portfolio-container .portfolio .slick-next img {
+        width: 10px;
+        height: 10px;
+        fill: #999;
+    }
+}

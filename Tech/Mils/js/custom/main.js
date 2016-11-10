@@ -1,5 +1,5 @@
 $(function() {
-	$('.portfolio-widget').slick({
+	$('.portfolio').slick({
 		infinite: false,
 		dots: true,
 		variableWidth: true,
@@ -27,36 +27,64 @@ $(function() {
 	});		
 });
 
-			
+		
 
+$(function(){
 
-$(document).ready(function(){
-    var tabs = $('.description_nav');
-    $('.tabs-content > div', tabs).each(function(i){
-        if ( i != 0 ) $(this).hide(0);
-    });
-    tabs.on('click', '.nav-tabs a', function(e){
-        e.preventDefault();
-        var tabId = $(this).attr('href');
-        $('.nav-tabs a',tabs).removeClass();
-        $(this).addClass('active');
-        $('.tabs-content > div', tabs).hide(0);
-        $(tabId).show();
-    });
-});
+	$(".tab").on("click", function(){
+		var tabs = $(".tab"),
+			cont = $(".tab-cont");	
+		tabs.removeClass("active");
+		cont.removeClass("active");
+		$(this).addClass("active");
+		cont.eq($(this).index()).addClass("active");
+	});
+});	
 
+$(function(){
 
-// $(document).ready(function(){
-//     var tabs2 = $('.description_nav2');
-//     $('.tabs--content2 > div', tabs2).each(function(i){
-//         if ( i != 0 ) $(this).hide(0);
-//     });
-//     tabs2.on('click', '.nav--tabs2 a', function(e){
-//         e.preventDefault();
-//         var tabId2 = $(this).attr('href');
-//         $('.nav--tabs2 a',tabs2).removeClass();
-//         $(this).addClass('active');
-//         $('.tabs--content2 > div', tabs2).hide(0);
-//         $(tabId2).show();
-//     });
-// });
+	$(".second-tab").on("click", function(){
+		var tabs = $(".second-tab"),
+			cont = $(".cont2");	
+		tabs.removeClass("active");
+		cont.removeClass("active");
+		$(this).addClass("active");
+		cont.eq($(this).index()).addClass("active");
+	});
+});	
+
+$(function(){
+
+	$(".third-tab").on("click", function(){
+		var tabs = $(".third-tab"),
+			cont = $(".cont3");	
+		tabs.removeClass("active");
+		cont.removeClass("active");
+		$(this).addClass("active");
+		cont.eq($(this).index()).addClass("active");
+	});
+});	
+
+$(function(){
+
+	$(".fourth-tab").on("click", function(){
+		var tabs = $(".fourth-tab"),
+			cont = $(".cont4");	
+		tabs.removeClass("active");
+		cont.removeClass("active");
+		$(this).addClass("active");
+		cont.eq($(this).index()).addClass("active");
+	});
+});	
+
+$(function(){
+
+	$(".fifth-tab").on("click", function(){
+		var tabs = $(".fifth-tab"),
+			cont = $(".cont5");	
+		tabs.removeClass("active");
+		cont.removeClass("active");
+		$(this).addClass("active");
+		cont.eq($(this).index()).addClass("active");
+	});
+});	
