@@ -1,0 +1,226 @@
+
+.hide_list {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 1060px;
+    background-color: rgba(0,0,0, 0.5);
+    padding-top: 208px;
+    z-index: 1000;
+}
+
+.hide_list .list_container {
+    display: block;
+    width: 964px;
+    height: 839px;
+    margin: 0  0 10px 188px;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.hide_list .list_container .list_header {
+    text-align: center;
+    padding-top: 24px;
+}
+
+.hide_list .list_container .list_header .img_right {
+    display: block;
+    float: right;
+    position: relative;
+    right: 23px;
+    bottom: 3px;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.hide_list .list_container .list_header .img_left {
+    display: block;
+    float: left;
+    position: relative;
+    left: 24px;
+    bottom: 3px;
+    cursor: pointer;
+    z-index: 9;
+
+}
+
+.hide_list .list_container .list_header span {
+    text-transform: uppercase;
+    font: 24px/26px 'Neucha', cursive;
+    color: #417abf;
+    letter-spacing: 2.4px;
+    display: block;
+    position: relative;
+    left: 11px;
+}
+
+.hide_list .list_container .rows_boot {
+    margin-top: 55px;
+    position: relative;
+}
+
+.hide_list .list_container .row {
+    margin-left: 65px;
+    margin-right: 0;
+}
+
+.hide_list .list_container .row .boot_box {
+    padding: 5px 0 5px 91px;
+    text-align: left;
+    width: 220px;
+    letter-spacing: 0.4px;
+
+}
+
+@media (min-width: 992px) {
+    .hide_list .list_container .row .col-md-offset-6 {
+        margin-left: 49%;
+    }
+}
+
+@media (min-width: 992px) {
+    .hide_list .list_container .row .col-md-offset-3 {
+        margin-left: 24.5%;
+    }
+}
+
+@media (min-width: 992px) {
+    .hide_list .list_container .row .col-md-offset-9 {
+        margin-left: 73.5%;
+    }
+}        
+
+.hide_list .list_container .row .col1 {
+    padding: 5px 0 5px 64px;
+}
+
+.hide_list .list_container .row .col2 {
+    padding: 5px 0 5px 93px;
+}
+
+.hide_list .list_container .row .col3 {
+    padding: 5px 0 5px 100px;
+}
+
+.hide_list .list_container .row .col4 {
+    padding: 5px 0 5px 99px;
+}
+
+.hide_list .list_container .box_imageA {
+    position: absolute;
+    top: -8px;
+    left: 57px;
+}
+
+.hide_list .list_container .box_imageF {
+    position: absolute;
+    top: -5px;
+    left: 313px;
+}
+
+.hide_list .list_container .box_imageL {
+    position: absolute;
+    top: -7px;
+    right: 375px;
+}
+
+.hide_list .list_container .box_imageR {
+    position: absolute;
+    top: -2px;
+    right: 156px;
+}
+
+.hide_list .list_container .box_imageB {
+    position: absolute;
+    left: 56px;
+}
+
+.hide_list .list_container .box_imageG {
+    position: absolute;
+    left: 308px;
+    top: 114px;
+}
+
+.hide_list .list_container .box_imageS {
+    position: absolute;
+    right: 149px;
+    top: 114px;
+}
+
+.hide_list .list_container .box_imageM {
+    position: absolute;
+    left: 313px;
+}
+
+.hide_list .list_container .box_imageH {
+    position: absolute;
+    left: 313px;
+}
+
+.hide_list .list_container .box_imageC {
+    position: absolute;
+    left: 57px;
+    top: 290px;
+}
+
+.hide_list .list_container .box_imageI {
+    position: absolute;
+    left: 310px;
+    top: 352px
+}
+
+.hide_list .list_container .box_imageT {
+    position: absolute;
+    right: 148px;
+    top: 355px;
+}
+
+.hide_list .list_container .box_imageN {
+    position: absolute;
+    right: 376px;
+    bottom: 254px;
+}
+
+.hide_list .list_container .box_imageJ {
+    position: absolute;
+    left: 313px;
+    bottom: 192px;
+}
+
+.hide_list .list_container .box_imageO {
+    position: absolute;
+    right: 380px;
+    bottom: 198px;
+}
+
+.hide_list .list_container .box_imageV {
+    position: absolute;
+    right: 151px;
+    bottom: 191px;
+}
+
+.hide_list .list_container .box_imageD {
+    position: absolute;
+    left: 63px;
+    bottom: 167px;
+}
+
+.hide_list .list_container .box_imageP {
+    position: absolute;
+    right: 376px;
+    bottom: 133px;
+}
+
+.hide_list .list_container .box_imageK {
+    position: absolute;
+        left: 309px;
+    bottom: 80px;
+}
+
+.hide_list .list_container .box_imageRus {
+    position: absolute;
+    right: 154px;
+    bottom: -4px;
+}
