@@ -25,5 +25,27 @@ $(function($) {
 
     $('.hide_button').click(function(){
         $('.menu_hidden').toggleClass('show')
-    })
+    });
+
+
+    var center = {lat: 45.9223505, lng: 22.7669689};
+    var israel = {lat: 32.0663043, lng: 34.7836494};
+    var germany = {lat: 50.1105609, lng: 8.661962};
+    var ukraine = {lat: 50.4444129, lng: 30.4493488};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: center
+    });
+    var marker = new google.maps.Marker({
+      position: israel,
+      map: map
+    });
+    var marker = new google.maps.Marker({
+      position: germany,
+      map: map
+    });
+    var marker = new google.maps.Marker({
+      position: ukraine,
+      map: map
+    });
 });
