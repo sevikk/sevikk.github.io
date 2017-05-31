@@ -9,8 +9,29 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <body>
 <header class="header">
+	<div class="menu_hidden">
+		<ul class="menu_block">
+			<li class="menu_block_item"><a href="" class="menu_block_link">Company</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Services</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Verticals</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Career</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Blog</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Contact us</a></li>
+		</ul>
+		<ul class="header_call">
+			<li><a href="tel:+38041246617"><img src="img/phone-call.png"></a></li>
+			<li><a href="tel:+38041246617">+380-412-466179</a></li>
+		</ul>
+		<ul class="header_lang">
+			<li><a href=""><img src="img/USA.png"></a></li>
+			<li><a href=""><img src="img/Germany.png"></a></li>
+		</ul>
+	</div>
 	<img class="header_logo" src="img/logo.png"></img>
 	<div class="container">
+		<div class="hide_button">
+			<img src="img/menu.svg" alt="">
+		</div>
 		<ul class="header_lang">
 			<li><a href=""><img src="img/USA.png"></a></li>
 			<li><a href=""><img src="img/Germany.png"></a></li>
@@ -43,23 +64,23 @@
 		<div class="form_block">
 			<h2 class="form_block_title block_title">get in touch</h2>
 			<form class="">
-				<p class="col-md-6">
+				<p class="col-sm-6">
 					<input class="form_input" type="text" placeholder="Name...">
 				</p>
-				<p class="col-md-6">
+				<p class="col-sm-6">
 					<input class="form_input" type="email" placeholder="Email...">
 				</p>
-				<p class="col-md-6">
+				<p class="col-sm-6">
 					<input class="form_input" type="tel" placeholder="Phone...">
 				</p>
-				<p class="col-md-6">
+				<p class="col-sm-6">
 					<input class="form_input" type="text" placeholder="Company...">
 				</p>
-				<p class="col-md-3 input_file clearfix">
+				<p class="col-sm-3 input_file clearfix">
 					<span class="form_input">Add file</span>
 					<input class="form_input" type="file" placeholder="Add file" multiple>
 				</p>
-				<p class="col-md-12 clearfix">
+				<p class="col-sm-12 clearfix">
 					<textarea name="name" class="form_input" rows="6" placeholder="Message..."></textarea>
 				</p>
 				<div class="form_robot clearfix">
@@ -97,6 +118,8 @@
 		</div>
 	</div>
 </section>
+
+<div id="map"></div>
 
 
 <footer class="footer">
@@ -144,6 +167,7 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5_3ICot-sWFLbJExtTpje4dvnhl_kcUM"></script>
   <script type="text/javascript" src="js/owl.carousel.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </body>
