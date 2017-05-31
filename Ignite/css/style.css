@@ -923,6 +923,7 @@ img {
 		padding: 10px;
 	}
 	.menu_hidden .header_call {
+		display: block;
 		float: none;
 	}
 
