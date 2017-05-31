@@ -23,8 +23,12 @@ $(function($) {
 		$("#"+tab_id).addClass('current');
 	})
 
-    $('.hide_button').click(function(){
-        $('.menu_hidden').toggleClass('show')
+
+
+    $('#button-wrapper').on('click', function(e) {
+      e.preventDefault();
+      $(this).children().toggleClass('button-transform');
+      $('.menu_hidden').toggleClass('show');
     });
 
 
