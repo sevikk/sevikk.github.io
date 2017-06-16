@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ignite</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<body>
+<header class="header">
+	<div class="menu_hidden">
+		<ul class="menu_block">
+			<li class="menu_block_item"><a href="" class="menu_block_link">Company</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Services</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Verticals</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Career</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Blog</a></li>
+			<li class="menu_block_item"><a href="" class="menu_block_link">Contact us</a></li>
+		</ul>
+		<ul class="header_call">
+			<li><a href="tel:+38041246617"><img src="img/phone-call.png"></a></li>
+			<li><a href="tel:+38041246617">+380-412-466179</a></li>
+		</ul>
+		<ul class="header_lang">
+			<li><a href=""><img src="img/USA.png"></a></li>
+			<li><a href=""><img src="img/Germany.png"></a></li>
+		</ul>
+	</div>
+	<img class="header_logo" src="img/logo.png"></img>
+	<div class="container">
+		<button id="button-wrapper" class="hide_button">
+			<span id="button" class="menu-button" role="button"></span>
+		</button>
+		<ul class="header_lang">
+			<li><a href=""><img src="img/USA.png"></a></li>
+			<li><a href=""><img src="img/Germany.png"></a></li>
+		</ul>
+		<a href="" class="header_form">FREE QUOTE</a>
+		<ul class="header_call">
+			<li><a href="tel:+38041246617"><img src="img/phone-call.png"></a></li>
+			<li><a href="tel:+38041246617">+380-412-466179</a></li>
+		</ul>
+		<ul class="header_menu">
+			<li class="header_item"><a class="hedaer_link" href="">COMPANY</a></li>
+			<li class="header_item"><a class="hedaer_link" href="">SERVICES</a></li>
+			<li class="header_item"><a class="hedaer_link" href="">VERTICALS</a></li>
+			<li class="header_item"><a class="hedaer_link" href="">CAREER</a></li>
+			<li class="header_item"><a class="hedaer_link" href="">BLOG</a></li>
+			<li class="header_item"><a class="hedaer_link" href="">CONTACT US</a></li>
+		</ul>
+	</div>
+</header>
+
+<section class="subheader subheader_about">
+	<h2 class="subheader_title">ABOUT IGNITE</h2>
+</section>
+
+<section class="text_block">
+	<div class="container">
+		<h2 class="text_block_text">Ignite is a world-class provider of offshore software<br/> development services. We provide custom software solutions for startups<br/> and corporations across the globe.</h2>
+	</div>
+</section>
+
+<section class="aboutUs">
+	<div class="container">
+		<h2 class=" block_title">who we are</h2>
+		<div class="aboutUs_block">
+			<div class="aboutUs_block_leftBox">
+				<h3 class="aboutUs_block_leftBox_title">The Ignite<br/> team of more<br/> than 300<br/> employees...</h3>
+			</div>
+			<div class="aboutUs_block_rightBox">
+				<p class="aboutUs_block_rightBox_text">Founded in 2006, Ignite Ltd. is a leading provider of outsourced software solutions to companies around the globe, from startups to Fortune 500 corporations. Through strong Israeli-Ukrainian leadership, Ignite has built a solid reputation as a world-class provider of software development services at competitive offshore rates.
+				<br/><br/>
+				The Ignite team of more than 300 employees includes some of the most accomplished developers in the world. Our facilities include 6 R&D labs located throughout Eastern Europe, with management offices in both the Ukraine and Israel.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="management">
+	<div class="container">
+		<h2 class=" block_title">Management Team</h2>
+		<div class="management_block">
+			<div class="management_block_box">
+				<img src="img/about/Team-4.png" alt="">
+				<h3 class="management_block_box_title">Aviram<br/> Eisenberg</h3>
+				<h3 class="management_block_box_position">Managerial post</h3>
+			</div>
+			<div class="management_block_box">
+				<img src="img/about/Team-3.png" alt="">
+				<h3 class="management_block_box_title">Yariv <br/> Levskiram</h3>
+				<h3 class="management_block_box_position">Managerial post</h3>
+			</div>
+			<div class="management_block_box">
+				<img src="img/about/Team-2.png" alt="">
+				<h3 class="management_block_box_title">Lyudmyla <br/> Novosilska</h3>
+				<h3 class="management_block_box_position">Managerial post</h3>
+			</div>
+			<div class="management_block_box">
+				<img src="img/about/Team-1.png" alt="">
+				<h3 class="management_block_box_title">Omri <br/> Raisman</h3>
+				<h3 class="management_block_box_position">Managerial post</h3>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="facility">
+	<div class="container">
+		<h2 class=" block_title">Facilities</h2>
+		<div class="facility_block">
+			<div class="facility_block_box-1">
+				<img class="facility_block_image" src="img/about/facility-3.png" alt="">
+			</div>
+			<div class="facility_block_box-2">
+				<img class="facility_block_image" src="img/about/facility-1.png" alt="">
+				<img src="img/about/facility-2.png" alt="">
+			</div>
+
+			<div class="facility_block_box-3">
+				<img class="facility_block_image-4" src="img/about/facility-4.png" alt="">
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<section class="facts">
+	<div class="container">
+		<h2 class=" block_title">Quick Facts</h2>
+		<div class="facts_block">
+			<div class="facts_block_box">
+				<h4 class="facts_block_box_year">2006</h4>
+				<span class="facts_block_box_separator"></span>
+				<h5 class="facts_block_box_desc management_block_box_position">Year of fuundation</h5>
+			</div>
+			<div class="facts_block_box">
+				<h4 class="facts_block_box_year">300+</h4>
+				<span class="facts_block_box_separator"></span>
+				<h5 class="facts_block_box_desc management_block_box_position">Employees</h5>
+			</div>
+			<div class="facts_block_box">
+				<h4 class="facts_block_box_year">150+</h4>
+				<span class="facts_block_box_separator"></span>
+				<h5 class="facts_block_box_desc management_block_box_position">Projects in Israel, USA,<br/> UK, Germany, Austria</h5>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="coverage">
+	<div class="container">
+		<h2 class=" block_title">Coverage</h2>
+		<div class="coverage_block">
+			<div class="coverage_block_box">
+				<img src="img/about/israel.png" alt="">
+				<div class="coverage_block_box_location">
+					<h4 class="coverage_block_box_country">ISRAEL</h4>
+					<span class="coverage_block_box_city">Netanya</span>
+				</div>
+			</div>
+			<div class="coverage_block_box">
+				<img src="img/about/ukraine.png" alt="">
+				<div class="coverage_block_box_location">
+					<h4 class="coverage_block_box_country">UKRAINE</h4>
+					<span class="coverage_block_box_city">Kyiv</span>
+					<span class="coverage_block_box_city">Zhytomyr</span>
+					<span class="coverage_block_box_city">Kharkiv</span>
+					<span class="coverage_block_box_city">Dnipro</span>
+					<span class="coverage_block_box_city">Odesa</span>
+				</div>
+			</div>
+			<div class="coverage_block_box">
+				<img src="img/about/germany.png" alt="">
+				<div class="coverage_block_box_location">
+					<h4 class="coverage_block_box_country">GERMANY</h4>
+					<span class="coverage_block_box_city">Frankfurt</span>
+				</div>
+			</div>
+			<div class="coverage_block_box">
+				<img src="img/about/austria.png" alt="">
+				<div class="coverage_block_box_location">
+					<h4 class="coverage_block_box_country">AUSTRIA</h4>
+					<span class="coverage_block_box_city">Vienna</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="dream">
+	<div class="dream_block">
+		<h4 class="dream_subtitle">Looking for <br/> Your Dream Job?</h4>
+		<h4 class="dream_title">We Are Hiring</h4>
+		<a class="dream_link" href="">Explore</a>
+	</div>
+</section>
+
+<section class="aboutUs">
+	<div class="container">
+		<h2 class=" block_title">Our Philosophy</h2>
+		<div class="aboutUs_block">
+			<div class="aboutUs_block_leftBox ">
+				<h3 class="aboutUs_block_leftBox_title philosophy_block_leftBox_title">Ignite has built<br/> our reputation <br/> on a simple<br/> premise:</h3>
+			</div>
+			<div class="aboutUs_block_rightBox">
+				<p class="aboutUs_block_rightBox_text">before we can provide the client with a solution, we must first understand the problem. That’s why we take time to listen before we start talking. When you sign on with us, your goals become our goals, your concerns become our concerns, and our team becomes your team. From concept to development and testing, right on through deployment and beyond, we partner with you throughout the lifecycle of your platform. Of course, robust cyber security and integration with 3rd-party software engines comes with the package.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="join">
+	<div class="join_block">
+		<h4 class="join_subtitle">We grow the next<br/> generation talents </h4>
+		<h4 class="join_title">Join Ignite<br/> Competence Center</h4>
+		<a class="join_link" href="">Explore</a>
+	</div>
+</section>
+
+
+<footer class="footer">
+	<div class="container">
+		<div class="footer_block">
+			<ul class="footer_menu footer_menu_company">
+				<li class="footer_item"><a href="" class="footer_company_link">Company</a></li>
+				<li class="footer_item"><a href="" class="footer_company_link">Services</a></li>
+				<li class="footer_item"><a href="" class="footer_company_link">Verticals</a></li>
+				<li class="footer_item"><a href="" class="footer_company_link">Agile</a></li>
+				<li class="footer_item"><a href="" class="footer_company_link">Knowledge Center</a></li>
+				<li class="footer_item"><a href="" class="footer_company_link">Contact</a></li>
+			</ul>
+			<ul class="footer_menu footer_menu_about">
+				<li class="footer_item"><a href="" class="footer_about_link">about</a></li>
+				<li class="footer_item"><a href="" class="footer_about_link">LEADERSHIP</a></li>
+				<li class="footer_item"><a href="" class="footer_about_link">FACILITIES</a></li>
+				<li class="footer_item"><a href="" class="footer_about_link">VISION</a></li>
+				<li class="footer_item"><a href="" class="footer_about_link">VALUES</a></li>
+				<li class="footer_item"><a href="" class="footer_about_link">CAREERS</a></li>
+			</ul>
+			<ul class="footer_menu footer_menu_automotive">
+				<li class="footer_item"><a href="" class="footer_automotive_link">AUTOMOTIVE</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">CLOUD</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">E-COMMERCE</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">MEDIA & ENTERTAINMENT</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">MOBILE APP DEVELOPMENT</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">GAME DEVELOPMENT</a></li>
+				<li class="footer_item"><a href="" class="footer_automotive_link">TELECOM SOFTWARE</a></li>
+			</ul>
+			<ul class="footer_menu footer_menu_icons">
+				<li class="footer_item"><a class="footer_icon_link"><img src="img/linkedin.png" alt=""></a></li>
+				<li class="footer_item"><a class="footer_icon_link"><img src="img/facebook.png" alt=""></a></li>
+				<li class="footer_item"><a class="footer_icon_link"><img src="img/twitter.png" alt=""></a></li>
+				<li class="footer_item"><a class="footer_icon_link"><img src="img/youtube.png" alt=""></a></li>
+				<li class="footer_item"><a class="footer_icon_link"><img src="img/google-plus.png" alt=""></a></li>
+			</ul>
+		</div>
+		<span class="footer_company">© Ignite Out Sourcing</span>
+	</div>
+</footer>
+
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/owl.carousel.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
