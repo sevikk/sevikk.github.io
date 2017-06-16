@@ -472,9 +472,10 @@ img {
 	color: #fff;
 	border: none;
 	border-radius: 30px;
-	-webkit-transition: prop time;
-	-o-transition: prop time;
-	transition: prop time;tion: .2s;
+	-webkit-transition:  .2s;
+	-o-transition:  .2s;
+	transition: .2s;
+	position: relative;
 }
 
 .study_block .study_link:hover {
@@ -775,10 +776,40 @@ img {
 	-webkit-transition: .2s;
 	-o-transition: .2s;
 	transition: .2s;
+	position: relative;
 }
 .dream_link:hover {
 	color: #fff;
 	box-shadow: 0 0 10px 0px #1f6d90;
+	transition: .2s;
+}
+
+.dream_link:after {
+	content: url('../img/about/next.svg');
+	position: absolute;
+	top: 14px;
+    right: 20px;
+	transition: .2s;
+}
+
+.join_link:after {
+	content: url('../img/about/next.svg');
+	position: absolute;
+	top: 14px;
+    right: 20px;
+	transition: .2s;
+}
+
+.study_link:after {
+	content: url('../img/about/next.svg');
+	position: absolute;
+	top: 14px;
+    right: 20px;
+	transition: .2s;
+}
+
+.dream_link:after:hover {
+    right: 10px;
 	transition: .2s;
 }
 
@@ -824,6 +855,7 @@ img {
 	-webkit-transition: .2s;
 	-o-transition: .2s;
 	transition: .2s;
+	position: relative;
 }
 
 .join_link:hover {
