@@ -1,10 +1,10 @@
 $(function($) {
-    $('.header_slider').owlCarousel({
-        loop:true,
-        items: 1,
-        nav:false,
-        dots:true,
-    })
+    //$('.header_slider').owlCarousel({
+   //     loop:true,
+    //    items: 1,
+    //    nav:false,
+    //    dots:true,
+   // })
     $('.stories_slider').owlCarousel({
         items: 1,
         nav:true,
