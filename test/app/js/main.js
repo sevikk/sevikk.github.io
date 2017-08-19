@@ -12,7 +12,6 @@ jQuery(document).ready(function ($) {
 
     function setEqualHeight(columns) {
         var tallestcolumn = 0;
-        // columns.height();
         columns.each(function () {
             currentHeight = $(this).height();
             if (currentHeight > tallestcolumn) {
@@ -23,18 +22,10 @@ jQuery(document).ready(function ($) {
     }
 
     setEqualHeight(columns);
-    setTimeout(setEqualHeight, columns, 100);
+
+    $(window).resize(function () {
+        setEqualHeight(columns);
+    });
 
 
-    // $(document).ready(function () {
-    //     setEqualHeight(columns);
-    //     orient();
-    //     setTimeout(setEqualHeight, columns, 100);
-    // });
-
-
-});
-jQuery(window).resize(function () {
-    setEqualHeight(columns);
-    setTimeout(setEqualHeight, columns, 100);
 });
