@@ -186,6 +186,20 @@ a
 				color $white
 				position relative
 				z-index 2
+	&_box-t
+		width 25%
+		min-height 320px
+		@media $ultra
+			width 33.33%
+		@media $tablet
+			width 50%
+		@media $phoneAl
+			width 100%
+			height auto !important
+			max-height auto
+			min-height auto
+	&_box-t.about_box-purp
+		display block
 	&_box-large
 		width 66.66%
 		background url("../img/block-image/man.png") center no-repeat
@@ -193,6 +207,8 @@ a
 			width 50%
 		@media $tablet
 			width 100%
+			br
+				display none
 		&:before
 			content ''
 			position absolute
@@ -208,6 +224,14 @@ a
 				margin-top 83px
 			@media $ultra1
 				margin-top 40px
+	&_box-tLarge
+		width 50%
+		min-height 320px
+		@media $ultra
+			width 66.66%
+		@media $tablet
+			width 100%
+			min-height 280px
 	&_box-violet
 		background-color #615f7d
 	&_box-ice
