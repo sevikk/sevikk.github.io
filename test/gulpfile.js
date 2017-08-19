@@ -69,7 +69,6 @@ gulp.task('watch', ['css-libs', 'browser-sync', 'scripts'], function(){
 	gulp.watch('app/js/**/*.js', browserSync.reload);
 });
 
-
 gulp.task('build', ['clean', 'stylus', 'scripts'], function() {
 
 	var buildCss = gulp.src([
