@@ -1,0 +1,275 @@
+@import "variables.styl";
+
+*
+    box-sizing border-box
+
+body
+    font-family 'Open Sans'
+    font-size 14px
+    font-weight 400
+    user-select none
+
+a
+    text-decoration none
+    &:hover
+        text-decoration none
+    &:focus
+        text-decoration none
+    &:active
+        text-decoration none
+
+h1, h2, h3, h4, h5, h6, ul, ol
+    padding 0
+    margin 0
+    list-style none
+
+// HEADER + NAV
+
+.header
+    &_registration
+        line-height 36px
+        background-color $orange
+        &_block
+            a
+                color $orangeText
+                font-family 'Bebas Neue'
+                font-size 15px
+                font-weight 400
+                line-height 18.46px
+                text-transform uppercase
+                transition .2s
+                letter-spacing 0.15px
+                &:hover
+                    color $white
+                    transition .2s
+                &:active
+                    color $white
+                    transition .2s
+            span
+                color $orangeText
+                font-family 'Bebas Neue'
+                font-size 15px
+                font-weight 400
+                line-height 18.46px
+                text-transform uppercase
+            &_text
+                margin-right 3px
+            &_login
+                margin-right 10px
+            &_link
+                color $white !important
+    &_block
+        min-height 112px
+        background-color $headerBg
+        &_title
+            color $darkGrey
+            font-family 'Bebas Neue'
+            font-size 41px
+            font-weight 600
+            text-transform uppercase
+            line-height 122px
+            letter-spacing 0.15px
+            &_span
+                color $orange
+        &_nav
+            float right
+            line-height 112px
+            margin-right 24px
+            &_menu
+                &_item
+                    display inline-block
+                    width 60px
+                    text-align center
+                    &_link
+                        padding 10px
+                        color $navLink
+                        font-family 'Myriad Pro'
+                        font-size 13px
+                        font-weight 400
+                        text-transform uppercase
+                        transition .2s
+                        border-bottom 3px solid transparent
+                        position relative
+                        &:hover
+                            font-weight 600
+                            border-bottom 3px solid $orange
+                            transition .2s
+            &_submenu
+                display none
+                padding 17px 0 20px
+                text-align center
+                position absolute
+                border 1px solid $borderMenu
+                background-color $white
+                transform translate(-15px, -25px)
+                &_item
+                    line-height 1.5
+                    width 70px
+                    display block
+                    position relative
+                    &_link
+                        color $navLink
+                        font-size 12px
+                        font-weight 400
+                        line-height 24.65px
+                        text-transform uppercase
+                        &:hover
+                            font-weight 600
+                            color $navLinkHover
+            &_submenu-1
+                display none
+                padding 17px 0 20px
+                text-align center
+                position absolute
+                right -126px
+                border 1px solid $borderMenu
+                background-color $white
+                transform translate(-15px, -25px)
+                &_item
+                    line-height 1.5
+                    width 70px
+                    display block
+                    position relative
+                    &_link
+                        color $navLink
+                        font-size 12px
+                        font-weight 400
+                        line-height 24.65px
+                        text-transform uppercase
+                        &:hover
+                            font-weight 600
+                            color $navLinkHover
+
+
+.header_block_nav .header_block_nav_menu_item:hover .header_block_nav_submenu
+    display block
+
+.header_block_nav .header_block_nav_submenu_item:hover .header_block_nav_submenu-1
+    display block
+
+.header_block_nav_menu_item:hover .header_block_nav_menu_item_link
+    border-bottom 3px solid $orange
+
+.login
+    float right
+
+.white
+    color $white
+
+ // MAIN
+
+.main
+    padding 50px 0 75px
+    background-color $white
+    &_navigation
+        &_link
+            opacity 0.78
+            color $navigationLink
+            font-family Ubuntu
+            font-size 14px
+            font-weight 400
+            line-height 24.65px
+            &.active
+                color $navigationLinkAcive
+    &_block
+        margin-top 40px
+        &_title
+            color $orange
+            font-size 27px
+            font-weight 700
+            line-height 19.54px
+        &_text
+            margin-top 14px
+            color $mainText
+            font-family Ubuntu
+            font-size 14px
+            font-weight 300
+            line-height 19px
+            letter-spacing 0.28px
+        &_contact
+            margin 20px 0 10px
+            width 50%
+            float left
+            padding-right 40px
+            &_title
+                padding-bottom 20px
+                margin-bottom 20px
+                color $orange
+                font-size 23px
+                font-weight 400
+                line-height 24.65px
+                text-transform uppercase
+                border-bottom 9px solid $hr
+        &_reach
+            margin 20px 0 10px
+            width 50%
+            float left
+            padding-left 40px
+            &_title
+                padding-bottom 20px
+                margin-bottom 20px
+                color $orange
+                font-size 23px
+                font-weight 400
+                line-height 24.65px
+                text-transform uppercase
+                border-bottom 9px solid $hr
+            &_test
+                color $reachText
+                font-family 'Myriad Pro'
+                font-size 16px
+                font-weight 400
+            &_phone
+                display block
+                color $reachText
+                &:hover
+                    color $reachText
+            &_social
+                margin-top 30px
+                &_box
+                    display inline-block
+                    margin-right 10px
+                    background-color $navLinkHover
+                    transition .2s
+                    &:hover
+                        background-color rgba(0,0,0,0.4)
+                        transition .2s
+                    &_link
+                        display block
+                        padding 10px
+
+
+// FORM
+.form_input
+    input
+    textarea
+        width 100%
+        padding 5px 10px
+        border 1px solid rgba(0, 0, 0, 0.07)
+        background-color #f6f6f6
+        outline none
+    textarea
+        min-height 110px
+        max-height 220px
+        overflow-y scroll
+        resize vertical
+    &_phone
+        padding-right 20px
+.btn
+    width 100px
+    height 40px
+    color $white
+    font-size 13px
+    font-weight 700
+    text-transform uppercase
+    background-color $orange
+    transition .2s
+    outline none
+    &:hover
+        color $white
+        background-color $orangeHover
+        transition .2s
+
+.halfWidth
+    float left
+    width 50%
