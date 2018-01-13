@@ -2,6 +2,7 @@
 .vscode
 node_modules/
 .blocks-library
+dist/
 **/.DS_Store
 stats.json
 coverage
