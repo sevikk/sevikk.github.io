@@ -8,12 +8,12 @@ import { AuthData } from "./auth-data.model";
 import { Store } from '@ngrx/store';
 import { AppAuthState } from '../store/app.states';
 import { AutoLogin } from '../store/actions/auth.actions';
+import { User } from '../models/user';
 
-const BACKEND_URL = environment.apiUrl + "/user";
+const BACKEND_URL = environment.apiUrl + "/user/";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
   private userId: string;
@@ -29,10 +29,6 @@ export class AuthService {
     return this.token;
   }
 
-  getIsAuth() {
-    return this.isAuthenticated;
-  }
-
   getUserId() {
     return this.userId;
   }
@@ -44,6 +40,16 @@ export class AuthService {
   createUser(name: string, email: string, password: string) {
     const authData: AuthData = { name: name, email: email, password: password };
     return this.http.post(BACKEND_URL + "/signup", authData)
+  }
+
+  updateUser(id: string, name: string, email: string) {
+    const userData: User = {
+      id: id,
+      name: name,
+      email: email
+    }
+    
+    return this.http.put(BACKEND_URL + id, userData);
   }
 
   login(email: string, password: string) {    
@@ -61,7 +67,6 @@ export class AuthService {
     if (token) {
       const expiresInDuration = response.expiresIn;
       this.setAuthTimer(expiresInDuration);
-      this.isAuthenticated = true;
       this.userId = response.userId;
       this.authStatusListener.next(true);
       const now = new Date();
@@ -83,7 +88,6 @@ export class AuthService {
     if (expiresIn > 0) {
       this.token = authInformation.token;
       this.store.dispatch(new AutoLogin(authInformation))
-      this.isAuthenticated = true;
       this.userId = authInformation.userId;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
@@ -92,7 +96,6 @@ export class AuthService {
 
   logout() {
     this.token = null;
-    this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.userId = null;
     clearTimeout(this.tokenTimer);

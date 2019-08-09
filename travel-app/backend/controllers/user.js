@@ -67,3 +67,31 @@ exports.userLogin = (req, res, next) => {
       });
     });
 }
+
+exports.updateUser = (req, res, next) => {
+  let fetchedUser;    
+  const userDataUpdate = {
+    name: req.body.name,
+    email: req.body.email
+  }
+  // User.findOne({ email: req.body.email })
+  // .then(result => {
+  //   if(result.name === req.body.name) {
+  //     res.status(401).json({ message: "user already exists" });
+  //   } else {}
+    
+  // })
+  User.updateOne({ _id: req.params.id}, userDataUpdate)
+    .then(result => {
+      if (result.n > 0) {
+        res.status(200).json({ message: "Update successful!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Couldn't udpate post!"
+      });
+    });
+}

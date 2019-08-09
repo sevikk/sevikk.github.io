@@ -16,13 +16,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/app.states';
 import { AuthEffects } from './store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EditProfileComponent } from './auth/edit-profile/edit-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({

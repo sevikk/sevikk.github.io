@@ -9,6 +9,8 @@ import {
   SignUp, SignUpSuccess, SignUpFailure,
   LogOut,
   AutoLogin,
+  UpdateUser,
+  UpdateUserSuccess,
 } from '../actions/auth.actions';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/models/user';
@@ -85,6 +87,7 @@ export class AuthEffects {
         );
     })
   );
+  
 
   @Effect({ dispatch: false })
   SignUpFailure: Observable<any> = this.actions.pipe(
@@ -103,6 +106,33 @@ export class AuthEffects {
   AutoLogin: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.AUTO_LOGIN),
     map((action: AutoLogin) => action.payload)
+  )
+
+  @Effect()
+  UpdateUser: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.UPDATE_USER_DATA),
+    map((action: UpdateUser) => action.payload),
+    switchMap(payload => {
+      return this.authService.updateUser(payload.id, payload.name, payload.email)
+      .pipe(
+        map((user: User) => {
+          return new UpdateUserSuccess({name: payload.name, email: payload.email});
+        }),
+        catchError((error) => {
+          return (new SignUpFailure({ error: error }) as any);
+        })
+      )
+    })
+  )
+
+  @Effect({dispatch: false})
+  UpdateUserSuccess: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.UPDATE_USER_DATA_SUCCESS),
+    tap(user => {
+      console.log(user);
+      localStorage.setItem("name", user.payload.name);
+
+    })
   )
 
 }

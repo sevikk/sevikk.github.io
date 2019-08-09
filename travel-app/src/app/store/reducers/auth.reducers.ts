@@ -62,12 +62,7 @@ export function reducer(state = initialState, action: All): State {
     case AuthActionTypes.LOGOUT: {
       return initialState;
     }
-    default: {
-      return state;
-    }
-    case AuthActionTypes.AUTO_LOGIN: {
-      console.log(action);
-      
+    case AuthActionTypes.AUTO_LOGIN: {      
       return {
         ...state,
         isAuthenticated: true,
@@ -77,5 +72,21 @@ export function reducer(state = initialState, action: All): State {
         }
       }
     }
+    case AuthActionTypes.UPDATE_USER_DATA_SUCCESS: {
+      console.log(action);
+      console.log(state);
+        
+      return {
+        ...state,
+        user: {
+          name: action.payload.name,
+          email: action.payload.email
+        }
+      }
+    }
+    default: {
+      return state;
+    }
+    
   }
 }
