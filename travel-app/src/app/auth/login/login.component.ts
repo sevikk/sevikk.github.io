@@ -3,6 +3,9 @@ import { NgForm } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
+import { Store } from '@ngrx/store';
+import { AppAuthState } from 'src/app/store/app.states';
+import { LogIn } from 'src/app/store/actions/auth.actions';
 
 @Component({
   templateUrl: "./login.component.html",
@@ -12,7 +15,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private store: Store<AppAuthState>
+  ) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
@@ -28,6 +34,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
+    const payload = {
+      email: form.value.email,
+      password: form.value.password
+    };
+    this.store.dispatch(new LogIn(payload));
   }
 
   ngOnDestroy() {

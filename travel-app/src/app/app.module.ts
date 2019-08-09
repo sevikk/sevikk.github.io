@@ -11,6 +11,12 @@ import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorComponent } from "./error/error.component";
 import { AngularMaterialModule } from "./angular-material.module";
 import { PostsModule } from "./posts/posts.module";
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/app.states';
+import { AuthEffects } from './store/effects/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +30,10 @@ import { PostsModule } from "./posts/posts.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    PostsModule
+    PostsModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -10,9 +10,7 @@ exports.createPost = (req, res, next) => {
   });  
   post
     .save()
-    .then(createdPost => {
-      console.log(createdPost);
-      
+    .then(createdPost => {      
       res.status(201).json({
         message: "Post added successfully",
         post: {
@@ -102,7 +100,6 @@ exports.getPost = (req, res, next) => {
 exports.deletePost = (req, res, next) => {
   Post.deleteOne({ _id: req.params.id, creator: req.userData.userId })
     .then(result => {
-      console.log(result);
       if (result.n > 0) {
         res.status(200).json({ message: "Deletion successful!" });
       } else {

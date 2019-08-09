@@ -2,6 +2,9 @@ import { Component, OnInit, } from "@angular/core";
 // import { Subscription } from "rxjs";
 
 import { AuthService } from "./auth/auth.service";
+import { AppAuthState } from './store/app.states';
+import { Store } from '@ngrx/store';
+import { AutoLogin } from './store/actions/auth.actions';
 // import { ErrorService } from "./error/error.service";
 
 @Component({
@@ -15,10 +18,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private store: Store<AppAuthState>
     // private errorService: ErrorService
   ) {}
 
   ngOnInit() {
+    // this.store.dispatch(new AutoLogin())
     this.authService.autoAuthUser();
     // this.errorSub = this.errorService.getErrorListener().subscribe(
     //   message => this.hasError = message !== null
