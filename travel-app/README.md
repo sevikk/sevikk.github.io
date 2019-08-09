@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve -o` for a dev server. `http://localhost:4200/` will open automatically. The app will automatically reload if you change any of the source files.
-Run `npm run start:server` for backend running loacally.
+Run `npm run start:server` for backend running locally.
 
 ## Running unit tests
 
