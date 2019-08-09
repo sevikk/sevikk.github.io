@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { NgForm, FormGroup, FormControl } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { Store } from '@ngrx/store';
 
@@ -15,6 +15,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
 
+  authForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+
   constructor(
     public authService: AuthService,
     private store: Store<AppAuthState>
@@ -28,15 +34,17 @@ export class SignupComponent implements OnInit, OnDestroy {
     );
   }
 
-  onSignup(form: NgForm) {
-    if (form.invalid) {
+  onSignup() {
+    if (this.authForm.invalid) {
       return;
     }
     this.isLoading = true;
     const payload = {
-      email: form.value.email,
-      password: form.value.password
+      name: this.authForm.value.name,
+      email: this.authForm.value.email,
+      password: this.authForm.value.password
     };
+    
     this.store.dispatch(new SignUp(payload));
   }
 

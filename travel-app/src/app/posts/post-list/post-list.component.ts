@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { PageEvent } from "@angular/material";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 
 import { Post } from "../post.model";
 import { PostsService } from "../posts.service";
 import { AuthService } from "../../auth/auth.service";
+import { AppAuthState, selectAuthState } from 'src/app/auth/store/app.states';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: "app-post-list",
@@ -12,11 +14,6 @@ import { AuthService } from "../../auth/auth.service";
   styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  // posts = [
-  //   { title: "First Post", content: "This is the first post's content" },
-  //   { title: "Second Post", content: "This is the second post's content" },
-  //   { title: "Third Post", content: "This is the third post's content" }
-  // ];
   posts: Post[] = [];
   isLoading = false;
   totalPosts = 0;
@@ -26,12 +23,16 @@ export class PostListComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   userId: string;
   private postsSub: Subscription;
-  private authStatusSub: Subscription;
+
+  getState: Observable<any>;
 
   constructor(
     public postsService: PostsService,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private store: Store<AppAuthState>
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit() {
     this.isLoading = true;
@@ -44,11 +45,8 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
       });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
+      this.getState.subscribe((state) => {
+        this.userIsAuthenticated = state.isAuthenticated;
         this.userId = this.authService.getUserId();
       });
   }
@@ -71,6 +69,5 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.postsSub.unsubscribe();
-    this.authStatusSub.unsubscribe();
   }
 }

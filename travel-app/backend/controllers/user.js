@@ -6,6 +6,7 @@ const User = require("../models/user");
 exports.createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({
+      name: req.body.name,
       email: req.body.email,
       password: hash
     });
@@ -38,14 +39,17 @@ exports.userLogin = (req, res, next) => {
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
-      
       if (!result) {
         return res.status(401).json({
           message: "Auth failed"
         });
       }      
       const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
+        { 
+          email: fetchedUser.email,
+          name: fetchedUser.name,
+          userId: fetchedUser._id 
+        },
         'secret_this',
         { expiresIn: "1h" }
       );
@@ -53,7 +57,8 @@ exports.userLogin = (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
+        name: fetchedUser.name,
       });
     })
     .catch(err => {

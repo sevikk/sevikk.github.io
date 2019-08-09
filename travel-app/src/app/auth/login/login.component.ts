@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    this.authService.login(form.value.email, form.value.password);
     const payload = {
       email: form.value.email,
       password: form.value.password

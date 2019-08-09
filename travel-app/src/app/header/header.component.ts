@@ -5,6 +5,7 @@ import { AuthService } from "../auth/auth.service";
 import { AppAuthState, selectAuthState } from '../store/app.states';
 import { Store } from '@ngrx/store';
 import { LogOut } from '../store/actions/auth.actions';
+import { User } from '../models/user';
 
 @Component({
   selector: "app-header",
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
 
   getState: Observable<any>;
+  user: User;
 
   constructor(
     private authService: AuthService,
@@ -25,17 +27,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit() {
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    // this.authListenerSubs = this.authService
-    //   .getAuthStatusListener()
-    //   .subscribe(isAuthenticated => {
-    //     this.userIsAuthenticated = isAuthenticated;
-    //   });
-
-      this.getState.subscribe((state) => {
-        this.userIsAuthenticated = state.isAuthenticated;
-        // this.user = state.user;
-      });
+    this.getState.subscribe((state) => {
+      this.userIsAuthenticated = state.isAuthenticated;
+      this.user = state.user;      
+    });
   }
 
   onLogout() {

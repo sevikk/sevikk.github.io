@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
-// import { AuthService } from '../../services/auth.service';
 import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure,
@@ -48,7 +45,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
-    tap((user) => {
+    tap((user) => {      
       localStorage.setItem("email", user.payload.email)
       this.authService.loggedIn(user.payload.user);
     })
@@ -63,11 +60,11 @@ export class AuthEffects {
   SignUp: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP),
     map((action: SignUp) => action.payload),
-    switchMap(payload => {
-      return this.authService.createUser(payload.email, payload.password)
+    switchMap(payload => {      
+      return this.authService.createUser(payload.name, payload.email, payload.password)
       .pipe(
         map((user: User) => {
-          return new SignUpSuccess({password: payload.password, email: payload.email});
+          return new SignUpSuccess({name: payload.name, password: payload.password, email: payload.email});
         }),
         catchError((error) => {
           return (new SignUpFailure({ error: error }) as any);
@@ -105,17 +102,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   AutoLogin: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.AUTO_LOGIN),
-    map((action: AutoLogin) => action.payload),
-    tap(user => {
-      // this.authService.autoAuthUser();
-    })
+    map((action: AutoLogin) => action.payload)
   )
-
-  // @Effect({ dispatch: false })
-  // GetStatus: Observable<any> = this.actions
-  //   .ofType(AuthActionTypes.GET_STATUS)
-  //   .switchMap(payload => {
-  //     return this.authService.getStatus();
-  //   });
 
 }
