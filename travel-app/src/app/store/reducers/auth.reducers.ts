@@ -65,6 +65,9 @@ export function reducer(state = initialState, action: All): State {
       return {
         ...state,
         isAuthenticated: true,
+        user: {
+          email: action.payload.email
+        }
       }
     }
   }

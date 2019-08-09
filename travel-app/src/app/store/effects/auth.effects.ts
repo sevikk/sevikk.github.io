@@ -49,6 +49,7 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
+      localStorage.setItem("email", user.payload.email)
       this.authService.loggedIn(user.payload.user);
     })
   );
@@ -106,8 +107,6 @@ export class AuthEffects {
     ofType(AuthActionTypes.AUTO_LOGIN),
     map((action: AutoLogin) => action.payload),
     tap(user => {
-      console.log('All is good');
-      
       // this.authService.autoAuthUser();
     })
   )

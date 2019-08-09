@@ -31,6 +31,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 10
     })
