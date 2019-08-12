@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 
 import { environment } from "../../environments/environment";
 import { Post } from "./post.model";
+import { MatSnackBar } from '@angular/material';
 
 const BACKEND_URL = environment.apiUrl + "/posts/";
 
@@ -14,7 +15,11 @@ export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<{ posts: Post[]; postCount: number }>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private _snackBar: MatSnackBar
+    ) {}
 
   getPosts(postsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
@@ -31,7 +36,8 @@ export class PostsService {
                 content: post.content,
                 id: post._id,
                 imagePath: post.imagePath,
-                creator: post.creator
+                creator: post.creator,
+                creatorEmail: post.creatorEmail
               };
             }),
             maxPosts: postData.maxPosts
@@ -73,6 +79,9 @@ export class PostsService {
         postData
       )
       .subscribe(responseData => {
+        this._snackBar.open('Post created succesfully', null, {
+          duration: 2000,
+        });
         this.router.navigate(["/"]);
       });
   }
@@ -98,6 +107,9 @@ export class PostsService {
     this.http
       .put(BACKEND_URL + id, postData)
       .subscribe(response => {
+        this._snackBar.open('Post updated succesfully', null, {
+          duration: 2000,
+        });
         this.router.navigate(["/"]);
       });
   }

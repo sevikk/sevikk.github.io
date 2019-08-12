@@ -12,6 +12,7 @@
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
     </mat-action-row>
+    <p *ngIf="post.creatorEmail">create by: {{post.creatorEmail}}</p>
   </mat-expansion-panel>
 </mat-accordion>
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"

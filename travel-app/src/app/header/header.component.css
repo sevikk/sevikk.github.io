@@ -17,3 +17,13 @@ ul {
 .spacer {
   flex: 1 1 auto;
 }
+
+.user-block button {
+  padding: 5px 15px;
+}
+
+.user-block img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

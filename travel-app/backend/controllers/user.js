@@ -29,7 +29,7 @@ exports.createUser = (req, res, next) => {
 exports.userLogin = (req, res, next) => {
   let fetchedUser;
   User.findOne({ email: req.body.email })
-    .then(user => {          
+    .then(user => {             
       if (!user) {
         return res.status(401).json({
           message: "Auth failed"
@@ -38,7 +38,7 @@ exports.userLogin = (req, res, next) => {
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then(result => {
+    .then(result => {      
       if (!result) {
         return res.status(401).json({
           message: "Auth failed"
@@ -68,23 +68,21 @@ exports.userLogin = (req, res, next) => {
     });
 }
 
+exports.changePassword = (req, res, next) => {
+
+}
+
 exports.updateUser = (req, res, next) => {
-  let fetchedUser;    
+  const url = req.protocol + "://" + req.get("host");  
   const userDataUpdate = {
     name: req.body.name,
-    email: req.body.email
-  }
-  // User.findOne({ email: req.body.email })
-  // .then(result => {
-  //   if(result.name === req.body.name) {
-  //     res.status(401).json({ message: "user already exists" });
-  //   } else {}
-    
-  // })
+    email: req.body.email,
+    imagePath: url + "/images/" + req.body.image,
+  }  
   User.updateOne({ _id: req.params.id}, userDataUpdate)
     .then(result => {
       if (result.n > 0) {
-        res.status(200).json({ message: "Update successful!" });
+        res.status(200).json({ message: "Update successful!", result: userDataUpdate });
       } else {
         res.status(401).json({ message: "Not authorized!" });
       }

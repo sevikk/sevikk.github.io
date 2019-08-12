@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getState.subscribe((state) => {
       this.userIsAuthenticated = state.isAuthenticated;
-      this.user = state.user;      
+      this.user = state.user;
     });
   }
 

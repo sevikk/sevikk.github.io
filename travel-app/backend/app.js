@@ -11,7 +11,7 @@ const app = express();
 mongoose
   .connect(
     "mongodb+srv://Seva:t8jAfTjc7e35dhMl@cluster0-e1dqw.mongodb.net/test", {useCreateIndex: true,
-    useNewUrlParser: true}
+    useNewUrlParser: true, useFindAndModify: false}
   )
   .then(() => {
     console.log("Connected to database!");
@@ -20,8 +20,8 @@ mongoose
     console.log("Connection failed!");
   });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '10mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false }));
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/", express.static(path.join(__dirname, "angular")));
 

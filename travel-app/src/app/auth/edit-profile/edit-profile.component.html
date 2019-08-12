@@ -1,5 +1,5 @@
 <mat-card>
-    <span> Edit profile</span>
+    <span>Edit profile</span>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form (submit)="saveUserData()" [formGroup]="userForm" *ngIf="!isLoading">
         <mat-form-field>
@@ -8,7 +8,14 @@
                     type="email"
                     placeholder="Your name" 
                     formControlName="name">
-            </mat-form-field>
+        </mat-form-field>
+        <div class="change-image">
+                <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+                <input type="file" #filePicker (change)="onImagePicked($event)" accept="image/*">
+        </div>
+        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview" >
+                <img (click)="filePicker.click()" [src]="imagePreview" [alt]="userForm.value.title">
+        </div>
         <mat-form-field>
         <input matInput 
                 name="email"
@@ -18,6 +25,7 @@
                 email>
         <mat-error *ngIf="userForm.controls.email.invalid">Please enter a valid email.</mat-error>
         </mat-form-field>
+        
         <!-- <mat-form-field>
         <input type="password" 
                 name="password"

@@ -1,16 +1,17 @@
 const Post = require("../models/post");
 
 exports.createPost = (req, res, next) => {
-  const url = req.protocol + "://" + req.get("host");
+  const url = req.protocol + "://" + req.get("host");  
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
     imagePath: url + "/images/" + req.file.filename,
-    creator: req.userData.userId
+    creator: req.userData.userId,
+    creatorEmail: req.userData.email
   });  
   post
     .save()
-    .then(createdPost => {      
+    .then(createdPost => {       
       res.status(201).json({
         message: "Post added successfully",
         post: {
@@ -30,7 +31,7 @@ exports.updatePost = (req, res, next) => {
   let imagePath = req.body.imagePath;
   if (req.file) {
     const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/" + req.file.filename;
+    imagePath = url + "/" + req.file.filename;
   }
   const post = new Post({
     _id: req.body.id,
@@ -63,7 +64,7 @@ exports.getPosts = (req, res, next) => {
     postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
   postQuery
-    .then(documents => {
+    .then(documents => {        
       fetchedPosts = documents;
       return Post.count();
     })

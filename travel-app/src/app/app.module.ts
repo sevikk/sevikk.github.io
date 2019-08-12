@@ -18,6 +18,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EditProfileComponent } from './auth/edit-profile/edit-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

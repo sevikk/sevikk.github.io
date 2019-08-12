@@ -42,13 +42,13 @@ export class AuthService {
     return this.http.post(BACKEND_URL + "/signup", authData)
   }
 
-  updateUser(id: string, name: string, email: string) {
+  updateUser(id: string, name: string, email: string, image: any) {
     const userData: User = {
       id: id,
       name: name,
-      email: email
-    }
-    
+      email: email,
+      image: image
+    }    
     return this.http.put(BACKEND_URL + id, userData);
   }
 
@@ -59,6 +59,12 @@ export class AuthService {
         BACKEND_URL + "/login",
         authData
       )
+  }
+
+  changePassword(password) {
+    console.log(password);
+    
+    this.http.put(BACKEND_URL + "/changePassword", password)
   }
 
   loggedIn(response) {
@@ -84,7 +90,7 @@ export class AuthService {
       return;
     }
     const now = new Date();
-    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();    
     if (expiresIn > 0) {
       this.token = authInformation.token;
       this.store.dispatch(new AutoLogin(authInformation))
@@ -129,6 +135,7 @@ export class AuthService {
     const userId = localStorage.getItem("userId");
     const email = localStorage.getItem("email");
     const name = localStorage.getItem("name");
+    const image = localStorage.getItem("image");    
     if (!token || !expirationDate) {
       return;
     }
@@ -137,7 +144,8 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       userId: userId,
       email: email,
-      name: name
+      name: name,
+      image: image
     };
   }
 }

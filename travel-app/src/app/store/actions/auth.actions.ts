@@ -11,9 +11,11 @@ export enum AuthActionTypes {
   LOGOUT = '[Auth] Logout',
   GET_STATUS = '[Auth] GetStatus',
   AUTO_LOGIN = '[Auth] Auto Login',
+  CHANGE_PASSWORD = '[User] Change password',
   UPDATE_USER_DATA = '[User] Update User',
   UPDATE_USER_DATA_SUCCESS = '[User] Update User Success',
   UPDATE_USER_DATA_FAILURE = '[User] Update User Failure'
+  
 }
 
 export class LogIn implements Action {
@@ -70,6 +72,11 @@ export class UpdateUserFailure implements Action {
   constructor(public payload: any) {}
 }
 
+export class ChangePassword implements Action {
+  readonly type = AuthActionTypes.CHANGE_PASSWORD;
+  constructor(public payload: any) {}
+}
+
 export class GetStatus implements Action {
   readonly type = AuthActionTypes.GET_STATUS;
 }
@@ -85,4 +92,5 @@ export type All =
   | UpdateUser
   | UpdateUserSuccess
   | UpdateUserFailure
+  | ChangePassword
   | AutoLogin;

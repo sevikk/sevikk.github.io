@@ -5,4 +5,5 @@ export class User {
   token?: string;
   expiresIn?: number;
   name?: string;
+  image?: any;
 }
