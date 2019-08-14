@@ -19,5 +19,6 @@
       <mat-error *ngIf="authForm.controls.password.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+    <span class="forgot-button" routerLink="/forgot">Forgot password?</span>
   </form>
 </mat-card>

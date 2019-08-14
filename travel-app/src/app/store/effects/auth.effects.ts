@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import {
@@ -11,10 +11,12 @@ import {
   AutoLogin,
   UpdateUser,
   UpdateUserSuccess,
+  ChangePasswordSuccess
 } from '../actions/auth.actions';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/models/user';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -23,7 +25,8 @@ export class AuthEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   @Effect()
@@ -117,11 +120,31 @@ export class AuthEffects {
     map((action: AutoLogin) => action.payload)
   )
 
-  @Effect({ dispatch: false })
+  @Effect()
   ChangePassword: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.CHANGE_PASSWORD),
     map((action: any) => action.payload),
-    tap(v => this.authService.changePassword(v))
+    switchMap(user => {       
+      return this.authService.changePassword(user)
+      .pipe( 
+        map(result => {          
+          return new ChangePasswordSuccess(result)
+        }),
+        catchError((error) => {
+          return (new SignUpFailure({ error: error }) as any);
+        })
+        
+      )
+    })
+  )
+
+  @Effect({ dispatch: false })
+  ChangePasswordSuccess: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.CHANGE_PASSWORD_SUCCESS),
+    map((action: any) => action.payload),
+    tap( loggedInData =>  {
+      this.authService.loggedIn(loggedInData)
+    })
   )
 
   @Effect()
@@ -132,8 +155,7 @@ export class AuthEffects {
       return this.authService.updateUser(payload.id, payload.name, payload.email, payload.image)
       .pipe(
         map((user: User) => {
-          
-          return new UpdateUserSuccess({name: payload.name, email: payload.email, image: payload.image});
+          return new UpdateUserSuccess({name: payload.name, email: payload.email, image: user.result.imagePath});
         }),
         catchError((error) => {
           return (new SignUpFailure({ error: error }) as any);

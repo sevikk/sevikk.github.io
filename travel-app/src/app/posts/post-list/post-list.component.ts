@@ -5,7 +5,7 @@ import { Subscription, Observable } from "rxjs";
 import { Post } from "../post.model";
 import { PostsService } from "../posts.service";
 import { AuthService } from "../../auth/auth.service";
-import { AppAuthState, selectAuthState } from 'src/app/auth/store/app.states';
+import { AppAuthState, selectAuthState } from 'src/app/store/app.states';
 import { Store } from '@ngrx/store';
 
 @Component({

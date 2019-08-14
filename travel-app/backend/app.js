@@ -2,9 +2,14 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const router = express.Router();
+
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const app = express();
 
@@ -38,10 +43,15 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', router);
+
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "angular", "index.html"));
 });
+
+
 
 module.exports = app;

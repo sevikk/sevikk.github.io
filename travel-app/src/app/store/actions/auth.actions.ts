@@ -11,7 +11,9 @@ export enum AuthActionTypes {
   LOGOUT = '[Auth] Logout',
   GET_STATUS = '[Auth] GetStatus',
   AUTO_LOGIN = '[Auth] Auto Login',
-  CHANGE_PASSWORD = '[User] Change password',
+  CHANGE_PASSWORD = '[User] Change Password',
+  CHANGE_PASSWORD_SUCCESS = '[User] Change Password Success',
+  CHANGE_PASSWORD_FAILED = '[User] Change Password Failed',
   UPDATE_USER_DATA = '[User] Update User',
   UPDATE_USER_DATA_SUCCESS = '[User] Update User Success',
   UPDATE_USER_DATA_FAILURE = '[User] Update User Failure'
@@ -77,6 +79,16 @@ export class ChangePassword implements Action {
   constructor(public payload: any) {}
 }
 
+export class ChangePasswordSuccess implements Action {
+  readonly type = AuthActionTypes.CHANGE_PASSWORD_SUCCESS;
+  constructor(public payload: any) {}
+}
+
+export class ChangePasswordFailed implements Action {
+  readonly type = AuthActionTypes.CHANGE_PASSWORD_FAILED;
+  constructor(public payload: any) {}
+}
+
 export class GetStatus implements Action {
   readonly type = AuthActionTypes.GET_STATUS;
 }
@@ -93,4 +105,6 @@ export type All =
   | UpdateUserSuccess
   | UpdateUserFailure
   | ChangePassword
+  | ChangePasswordSuccess
+  | ChangePasswordFailed
   | AutoLogin;

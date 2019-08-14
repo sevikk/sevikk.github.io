@@ -12,13 +12,14 @@ import { ErrorComponent } from "./error/error.component";
 import { AngularMaterialModule } from "./angular-material.module";
 import { PostsModule } from "./posts/posts.module";
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/app.states';
-import { AuthEffects } from './store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EditProfileComponent } from './auth/edit-profile/edit-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { AuthEffects } from './store/effects/auth.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
     HeaderComponent,
     ErrorComponent,
     EditProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -37,12 +39,14 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
     AngularMaterialModule,
     PostsModule,
     ReactiveFormsModule,
+    // StoreModule.forRoot(reducers),
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
-      maxAge: 10
+      maxAge: 50
     })
   ],
+  exports: [StoreModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

@@ -5,3 +5,13 @@ mat-form-field {
 mat-spinner {
   margin: auto;
 }
+
+.forgot-button {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.forgot-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -19,7 +19,9 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: All): State {
   switch (action.type) {
-    case AuthActionTypes.LOGIN_SUCCESS: {         
+    case AuthActionTypes.LOGIN_SUCCESS: {
+      console.log(action);
+           
       return {
         ...state,
         isAuthenticated: true,
@@ -29,7 +31,7 @@ export function reducer(state = initialState, action: All): State {
           expiresIn: action.payload.expiresIn,
           id: action.payload.userId,
           name: action.payload.user.name,
-          // image: action.payload.image
+          image: action.payload.user.image
         },
         errorMessage: null
       };
@@ -82,8 +84,20 @@ export function reducer(state = initialState, action: All): State {
         }
       }
     }
-    case AuthActionTypes.CHANGE_PASSWORD: {
-      return state
+    case AuthActionTypes.CHANGE_PASSWORD_SUCCESS: {      
+      return  {
+        ...state,
+        isAuthenticated: true,
+        user: {
+          email: action.payload.email,
+          token: action.payload.token,
+          expiresIn: action.payload.expiresIn,
+          id: action.payload.userId,
+          name: action.payload.name,
+          image: action.payload.user.image
+        },
+        errorMessage: null
+      };
     }
     default: {
       return state;

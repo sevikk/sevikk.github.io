@@ -42,13 +42,17 @@ export class AuthService {
     return this.http.post(BACKEND_URL + "/signup", authData)
   }
 
-  updateUser(id: string, name: string, email: string, image: any) {
-    const userData: User = {
-      id: id,
-      name: name,
-      email: email,
-      image: image
-    }    
+  updateUser(id: string, name: string, email: string, image: File | string) {
+    let userData: User | FormData;
+    if (typeof image === "object") {
+      userData = new FormData();
+      userData.append("id", id);
+      userData.append("name", name);
+      userData.append("email", email);
+      userData.append("image", image, name);
+    }
+    console.log(userData);
+    
     return this.http.put(BACKEND_URL + id, userData);
   }
 
@@ -61,10 +65,8 @@ export class AuthService {
       )
   }
 
-  changePassword(password) {
-    console.log(password);
-    
-    this.http.put(BACKEND_URL + "/changePassword", password)
+  changePassword(resetData) {
+    return this.http.post(BACKEND_URL + "/reset", resetData);
   }
 
   loggedIn(response) {
@@ -107,6 +109,10 @@ export class AuthService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/"]);
+  }
+
+  sendEmailForRestorePass(email) {
+    return this.http.post(BACKEND_URL + '/forgot', email);
   }
 
   private setAuthTimer(duration: number) {

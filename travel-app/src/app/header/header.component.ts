@@ -2,10 +2,10 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription, Observable } from "rxjs";
 
 import { AuthService } from "../auth/auth.service";
-import { AppAuthState, selectAuthState } from '../store/app.states';
-import { Store } from '@ngrx/store';
-import { LogOut } from '../store/actions/auth.actions';
 import { User } from '../models/user';
+import { Store } from '@ngrx/store';
+import { AppAuthState, selectAuthState } from '../store/app.states';
+import { LogOut } from '../store/actions/auth.actions';
 
 @Component({
   selector: "app-header",
@@ -23,14 +23,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private store: Store<AppAuthState>
     ) {
-      this.getState = this.store.select(selectAuthState);
+      this.getState = this.store.select(selectAuthState); 
     }
 
   ngOnInit() {
-    this.getState.subscribe((state) => {
-      this.userIsAuthenticated = state.isAuthenticated;
-      this.user = state.user;
-    });
+      this.getState.subscribe((state) => {        
+        this.userIsAuthenticated = state.isAuthenticated;
+        this.user = state.user;
+      }); 
   }
 
   onLogout() {

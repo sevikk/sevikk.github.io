@@ -1,5 +1,5 @@
-import { User } from '../../../models/user';
 import { AuthActionTypes, All } from '../actions/auth.actions';
+import { User } from 'src/app/models/user';
 
 
 export interface State {
@@ -19,7 +19,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: All): State {
   switch (action.type) {
-    case AuthActionTypes.LOGIN_SUCCESS: {      
+    case AuthActionTypes.LOGIN_SUCCESS: {         
       return {
         ...state,
         isAuthenticated: true,
@@ -27,7 +27,9 @@ export function reducer(state = initialState, action: All): State {
           email: action.payload.email,
           token: action.payload.token,
           expiresIn: action.payload.expiresIn,
-          id: action.payload.userId
+          id: action.payload.userId,
+          name: action.payload.user.name,
+          // image: action.payload.image
         },
         errorMessage: null
       };
@@ -44,7 +46,8 @@ export function reducer(state = initialState, action: All): State {
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: action.payload.email,
+          name: action.payload.name
         },
         errorMessage: null
       };
@@ -58,14 +61,33 @@ export function reducer(state = initialState, action: All): State {
     case AuthActionTypes.LOGOUT: {
       return initialState;
     }
-    default: {
-      return state;
-    }
-    case AuthActionTypes.AUTO_LOGIN: {
+    case AuthActionTypes.AUTO_LOGIN: {      
       return {
         ...state,
         isAuthenticated: true,
+        user: {
+          email: action.payload.email,
+          name: action.payload.name,
+          image: action.payload.image
+        }
       }
     }
+    case AuthActionTypes.UPDATE_USER_DATA_SUCCESS: {
+      return {
+        ...state,
+        user: {
+          name: action.payload.name,
+          email: action.payload.email,
+          image: action.payload.image
+        }
+      }
+    }
+    case AuthActionTypes.CHANGE_PASSWORD: {
+      return state
+    }
+    default: {
+      return state;
+    }
+    
   }
 }

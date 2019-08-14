@@ -8,7 +8,7 @@ export interface AppAuthState {
 }
 
 export const reducers = {
-  auth: auth.reducer
+  auth: auth.reducer,
 };
 
 export const selectAuthState = createFeatureSelector<AppAuthState>('auth');
