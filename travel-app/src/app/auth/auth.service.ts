@@ -50,9 +50,7 @@ export class AuthService {
       userData.append("name", name);
       userData.append("email", email);
       userData.append("image", image, name);
-    }
-    console.log(userData);
-    
+    }    
     return this.http.put(BACKEND_URL + id, userData);
   }
 

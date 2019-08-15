@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import {
@@ -17,6 +17,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/models/user';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Injectable()
@@ -40,8 +41,9 @@ export class AuthEffects {
         map((user) => {
           return new LogInSuccess({user: user, email: payload.email});
         }),
-        catchError((error) => {
-          return (new LogInFailure({ error: error }) as any);
+        catchError((err: any) => {
+          new LogInFailure({ error: err });
+          return of(null) //throwError(new LogInFailure({ error: err }))
         })
       )
     })
@@ -61,7 +63,9 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.LOGIN_FAILURE)
+    ofType(AuthActionTypes.LOGIN_FAILURE),
+    map((action: any) => action.payload),
+    tap(r => this.router.navigate(['/']))
   );
 
   @Effect()
@@ -84,7 +88,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
-    switchMap((user) => {
+    switchMap((user: any) => {
       return this.authService.login(user.payload.email, user.payload.password)
         .pipe(
           map(response => {
@@ -154,7 +158,7 @@ export class AuthEffects {
     switchMap(payload => {      
       return this.authService.updateUser(payload.id, payload.name, payload.email, payload.image)
       .pipe(
-        map((user: User) => {
+        map((user: User | any) => {
           return new UpdateUserSuccess({name: payload.name, email: payload.email, image: user.result.imagePath});
         }),
         catchError((error) => {

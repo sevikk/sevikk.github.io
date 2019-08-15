@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
 
+  isLoading = false;
   changePasswordForm: FormGroup;
 
   constructor(

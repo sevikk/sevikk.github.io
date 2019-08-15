@@ -84,7 +84,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
-    switchMap((user) => {
+    switchMap((user: any) => {
       return this.authService.login(user.payload.email, user.payload.password)
         .pipe(
           map(response => {
