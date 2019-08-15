@@ -109,20 +109,43 @@ exports.forgotPassword = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  const url = req.protocol + "://" + req.get("host");
-  const imagePath = url + "/images/" + req.file.filename;
-  const userDataUpdate = {
-    name: req.body.name,
-    email: req.body.email,
-    imagePath: imagePath,
+  let imagePath = req.body.image;  
+  if (req.file) {
+    const url = req.protocol + "://" + req.get("host");
+    imagePath = url + "/images/" + req.file.filename;
   }
+  // const userDataUpdate = {
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   imagePath: imagePath,
+  // }
   User.findOne({ _id: req.params.id}, (err, user) => {
       user.image = imagePath;
       user.name = req.body.name;
       user.email = req.body.email;
       user.save().then(result => {
         if (result) {
-          res.status(200).json({ message: "Update successful!", result: userDataUpdate });
+          const token = jwt.sign(
+            { 
+              email: user.email,
+              name: user.name,
+              userId: user._id 
+            },
+            'secret_this',
+            { expiresIn: "1h" }
+          );          
+          res.status(200).json({
+            message: "Update successful!", 
+            result: {
+              token: token,
+              expiresIn: 3600,
+              userId: user._id,
+              name: user.name,
+              email: user.email,
+              imagePath: user.image,
+              edited: true
+            } 
+          });
         } else {
           res.status(401).json({ message: "Not authorized!" });
         }

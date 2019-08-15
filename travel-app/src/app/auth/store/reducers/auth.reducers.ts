@@ -73,6 +73,8 @@ export function reducer(state = initialState, action: All): State {
       }
     }
     case AuthActionTypes.UPDATE_USER_DATA_SUCCESS: {
+      console.log(action);
+      
       return {
         ...state,
         user: {

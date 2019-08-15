@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "", component: PostListComponent },
   { path: "create", component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: "edit/:postId", component: PostCreateComponent, canActivate: [AuthGuard] },
-  { path: "auth", loadChildren: "./auth/auth.module#AuthModule"},
+  { path: "auth", loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   { path: "profile", component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: "forgot", component: ForgotPasswordComponent },
   { path: "reset-password/:id", component: ChangePasswordComponent },

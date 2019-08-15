@@ -19,9 +19,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: All): State {
   switch (action.type) {
-    case AuthActionTypes.LOGIN_SUCCESS: {
-      console.log(action);
-           
+    case AuthActionTypes.LOGIN_SUCCESS: {           
       return {
         ...state,
         isAuthenticated: true,
@@ -74,13 +72,13 @@ export function reducer(state = initialState, action: All): State {
         }
       }
     }
-    case AuthActionTypes.UPDATE_USER_DATA_SUCCESS: {
+    case AuthActionTypes.UPDATE_USER_DATA_SUCCESS: {      
       return {
         ...state,
         user: {
-          name: action.payload.name,
-          email: action.payload.email,
-          image: action.payload.image
+          name: action.payload.result.name,
+          email: action.payload.result.email,
+          image: action.payload.result.imagePath
         }
       }
     }

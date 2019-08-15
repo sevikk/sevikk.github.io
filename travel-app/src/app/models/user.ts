@@ -6,5 +6,4 @@ export class User {
   expiresIn?: number;
   name?: string;
   image?: any;
-  payload?: any;
 }

@@ -35,11 +35,10 @@ export class EditProfileComponent implements OnInit {
             this.userForm = new FormGroup({
                 name: new FormControl(this.user.name),
                 email: new FormControl(this.user.email),
-                image: new FormControl(null, {
+                image: new FormControl(this.user.image, {
                   validators: [Validators.required],
                   asyncValidators: [mimeType]
                 })
-                // password: new FormControl(''),
             });
             this.imagePreview = this.user.image;                        
           });
@@ -57,8 +56,6 @@ export class EditProfileComponent implements OnInit {
       }
 
     saveUserData(){
-      
-             
       const payload = {
           id: this.authService.getUserId(),
           name: this.userForm.value.name,

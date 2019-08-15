@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";

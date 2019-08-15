@@ -50,7 +50,14 @@ export class AuthService {
       userData.append("name", name);
       userData.append("email", email);
       userData.append("image", image, name);
-    }    
+    } else {
+      userData = {
+        id: id,
+        name: name,
+        email: email,
+        image: image,
+      };
+    }
     return this.http.put(BACKEND_URL + id, userData);
   }
 
@@ -80,7 +87,10 @@ export class AuthService {
         now.getTime() + expiresInDuration * 1000
       );
       this.saveAuthData(token, expirationDate, this.userId, response.name);
-      this.router.navigate(["/"]);
+      if (!response.edited) {
+        this.router.navigate(["/"]);
+      }
+      
     }
   }
 

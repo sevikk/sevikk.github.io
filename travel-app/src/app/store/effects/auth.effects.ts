@@ -159,7 +159,9 @@ export class AuthEffects {
       return this.authService.updateUser(payload.id, payload.name, payload.email, payload.image)
       .pipe(
         map((user: User | any) => {
-          return new UpdateUserSuccess({name: payload.name, email: payload.email, image: user.result.imagePath});
+          return new UpdateUserSuccess({
+            result: user.result
+          });
         }),
         catchError((error) => {
           return (new SignUpFailure({ error: error }) as any);
@@ -171,12 +173,13 @@ export class AuthEffects {
   @Effect({dispatch: false})
   UpdateUserSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.UPDATE_USER_DATA_SUCCESS),
-    tap(user => {
+    tap(user => {      
       this._snackBar.open('User updated succesfully', null, {
         duration: 2000,
       });
-      localStorage.setItem("name", user.payload.name);
-      localStorage.setItem("image", user.payload.image);
+      this.authService.loggedIn(user.payload.result);
+      localStorage.setItem("name", user.payload.result.name);
+      localStorage.setItem("image", user.payload.result.imagePath);
     })
   )
 

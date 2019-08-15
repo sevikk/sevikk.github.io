@@ -136,16 +136,13 @@ export class AuthEffects {
         
       )
     })
-    // tap(v => this.authService.changePassword(v))
   )
 
   @Effect()
   ChangePasswordSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.CHANGE_PASSWORD_SUCCESS),
     map((action: any) => action.payload),
-    tap( v =>  {
-      console.log(v);
-      
+    tap( v =>  {      
       this.authService.loggedIn(v)
       this.router.navigate(['/'])
     })
@@ -161,9 +158,9 @@ export class AuthEffects {
         map((user: User) => {
           return new UpdateUserSuccess({name: payload.name, email: payload.email, image: payload.image});
         }),
-        catchError((error) => {
-          return (new SignUpFailure({ error: error }) as any);
-        })
+        // catchError((error) => {
+        //   return (new SignUpFailure({ error: error }) as any);
+        // })
       )
     })
   )
@@ -172,6 +169,8 @@ export class AuthEffects {
   UpdateUserSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.UPDATE_USER_DATA_SUCCESS),
     tap(user => {
+      console.log(user);
+      
       this._snackBar.open('User updated succesfully', null, {
         duration: 2000,
       });
