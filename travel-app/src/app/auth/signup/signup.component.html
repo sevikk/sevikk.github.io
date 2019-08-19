@@ -17,7 +17,8 @@
              formControlName="email" 
              required 
              email>
-      <mat-error *ngIf="authForm.controls.email.invalid">Please enter a valid email.</mat-error>
+      <mat-error *ngIf="authForm.controls.email.invalid && !authForm.controls.email?.errors?.validEmail">Please enter a valid email.</mat-error>
+      <mat-error *ngIf="authForm.controls.email?.errors?.validEmail">This email is already taken. Choose another one</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input type="password" 
@@ -30,4 +31,6 @@
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit" [disabled]="authForm.invalid" *ngIf="!isLoading">Signup</button>
   </form>
+  <!-- <p *ngIf="errorMessage"> {{ errorMessage }}</p> -->
+  <!-- <button > Sign up again </button> -->
 </mat-card>

@@ -20,6 +20,7 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
 import { AuthEffects } from './store/effects/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { ModalDialogComponent } from './auth/modal-dialog/modal-dialog.component';
 
 
 @NgModule({
@@ -52,6 +53,9 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [
+    ErrorComponent, 
+    // ModalDialogComponent
+  ]
 })
 export class AppModule {}

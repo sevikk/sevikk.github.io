@@ -5,33 +5,21 @@
   !*** ./$$_lazy_route_resource lazy namespace object ***!
   \******************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var map = {
-	"./auth/auth.module": [
-		"./src/app/auth/auth.module.ts",
-		"auth-auth-module"
-	]
-};
-function webpackAsyncContext(req) {
-	if(!__webpack_require__.o(map, req)) {
-		return Promise.resolve().then(function() {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-
-	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(id);
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
 	});
 }
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
-module.exports = webpackAsyncContext;
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
@@ -108,7 +96,7 @@ module.exports = "<mat-card>\n  <span>Change password</span>\n  <mat-spinner *ng
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n    <span>Edit profile</span>\r\n    <mat-spinner *ngIf=\"isLoading\"></mat-spinner>\r\n    <form (submit)=\"saveUserData()\" [formGroup]=\"userForm\" *ngIf=\"!isLoading\">\r\n        <mat-form-field>\r\n            <input matInput \r\n                    name=\"nickname\" \r\n                    type=\"email\"\r\n                    placeholder=\"Your name\" \r\n                    formControlName=\"name\">\r\n        </mat-form-field>\r\n        <div class=\"change-image\">\r\n                <button mat-stroked-button type=\"button\" (click)=\"filePicker.click()\">Pick Image</button>\r\n                <input type=\"file\" #filePicker (change)=\"onImagePicked($event)\" accept=\"image/*\">\r\n        </div>\r\n        <div class=\"image-preview\" *ngIf=\"imagePreview !== '' && imagePreview\" >\r\n                <img (click)=\"filePicker.click()\" [src]=\"imagePreview\" [alt]=\"userForm.value.title\">\r\n        </div>\r\n        <mat-form-field>\r\n        <input matInput \r\n                name=\"email\"\r\n                type=\"email\" \r\n                placeholder=\"E-Mail\" \r\n                formControlName=\"email\" \r\n                email>\r\n        <mat-error *ngIf=\"userForm.controls.email.invalid\">Please enter a valid email.</mat-error>\r\n        </mat-form-field>\r\n        \r\n        <!-- <mat-form-field>\r\n        <input type=\"password\" \r\n                name=\"password\"\r\n                matInput \r\n                placeholder=\"Password\"\r\n                formControlName=\"password\">\r\n        <mat-error *ngIf=\"userForm.controls.password.invalid\">Please enter a valid password.</mat-error>\r\n        </mat-form-field> -->\r\n        <button *ngIf=\"!isLoading\" \r\n                mat-raised-button \r\n                color=\"accent\" \r\n                type=\"submit\" \r\n                [disabled]=\"userForm.invalid\">\r\n                    Update profile\r\n            </button>\r\n    </form>\r\n    </mat-card>"
+module.exports = "<mat-card>\r\n    <span>Edit profile</span>\r\n    <mat-spinner *ngIf=\"isLoading\"></mat-spinner>\r\n    <form (submit)=\"saveUserData()\" [formGroup]=\"userForm\" *ngIf=\"!isLoading\">\r\n        <mat-form-field>\r\n            <input matInput \r\n                    name=\"nickname\" \r\n                    type=\"email\"\r\n                    placeholder=\"Your name\" \r\n                    formControlName=\"name\">\r\n        </mat-form-field>\r\n        <div class=\"change-image\">\r\n                <button mat-stroked-button type=\"button\" (click)=\"filePicker.click()\">Pick Image</button>\r\n                <input type=\"file\" #filePicker (change)=\"onImagePicked($event)\" accept=\"image/*\">\r\n        </div>\r\n        <div class=\"image-preview\" *ngIf=\"imagePreview !== '' && imagePreview\" >\r\n                <img (click)=\"filePicker.click()\" [src]=\"imagePreview\" [alt]=\"userForm.value.title\">\r\n        </div>\r\n        <mat-form-field>\r\n        <input matInput \r\n                name=\"email\"\r\n                type=\"email\" \r\n                placeholder=\"E-Mail\" \r\n                formControlName=\"email\" \r\n                email>\r\n        <mat-error *ngIf=\"userForm.controls.email.invalid\">Please enter a valid email.</mat-error>\r\n        </mat-form-field>\r\n        <button *ngIf=\"!isLoading\" \r\n                mat-raised-button \r\n                color=\"accent\" \r\n                type=\"submit\" \r\n                [disabled]=\"userForm.invalid\">\r\n                    Update profile\r\n            </button>\r\n    </form>\r\n    </mat-card>"
 
 /***/ }),
 
@@ -194,7 +182,7 @@ const routes = [
     { path: "", component: _posts_post_list_post_list_component__WEBPACK_IMPORTED_MODULE_3__["PostListComponent"] },
     { path: "create", component: _posts_post_create_post_create_component__WEBPACK_IMPORTED_MODULE_4__["PostCreateComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: "edit/:postId", component: _posts_post_create_post_create_component__WEBPACK_IMPORTED_MODULE_4__["PostCreateComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-    { path: "auth", loadChildren: "./auth/auth.module#AuthModule" },
+    { path: "auth", loadChildren: () => __webpack_require__.e(/*! import() | auth-auth-module */ "auth-auth-module").then(__webpack_require__.bind(null, /*! ./auth/auth.module */ "./src/app/auth/auth.module.ts")).then(m => m.AuthModule) },
     { path: "profile", component: _user_edit_profile_edit_profile_component__WEBPACK_IMPORTED_MODULE_6__["EditProfileComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: "forgot", component: _user_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_8__["ForgotPasswordComponent"] },
     { path: "reset-password/:id", component: _user_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_7__["ChangePasswordComponent"] },
@@ -503,7 +491,14 @@ let AuthService = class AuthService {
             userData.append("email", email);
             userData.append("image", image, name);
         }
-        console.log(userData);
+        else {
+            userData = {
+                id: id,
+                name: name,
+                email: email,
+                image: image,
+            };
+        }
         return this.http.put(BACKEND_URL + id, userData);
     }
     login(email, password) {
@@ -525,7 +520,9 @@ let AuthService = class AuthService {
             const now = new Date();
             const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
             this.saveAuthData(token, expirationDate, this.userId, response.name);
-            this.router.navigate(["/"]);
+            if (!response.edited) {
+                this.router.navigate(["/"]);
+            }
         }
     }
     autoAuthUser() {
@@ -1381,11 +1378,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm2015/effects.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/auth.actions */ "./src/app/store/actions/auth.actions.ts");
-/* harmony import */ var src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/auth/auth.service */ "./src/app/auth/auth.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/auth.actions */ "./src/app/store/actions/auth.actions.ts");
+/* harmony import */ var src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
@@ -1401,80 +1400,84 @@ let AuthEffects = class AuthEffects {
         this._snackBar = _snackBar;
         this.router = router;
         this.LogIn = this.actions
-            .pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].LOGIN), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(payload => {
+            .pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(payload => {
             return this.authService.login(payload.email, payload.password)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((user) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["LogInSuccess"]({ user: user, email: payload.email });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["LogInFailure"]({ error: error });
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((user) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["LogInSuccess"]({ user: user, email: payload.email });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((err) => {
+                new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["LogInFailure"]({ error: err });
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null); //throwError(new LogInFailure({ error: err }))
             }));
         }));
-        this.LogInSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].LOGIN_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((user) => {
+        this.LogInSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((user) => {
             this._snackBar.open('Login succesfully', null, {
                 duration: 2000,
             });
             localStorage.setItem("email", user.payload.email);
             this.authService.loggedIn(user.payload.user);
         }));
-        this.LogInFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].LOGIN_FAILURE));
-        this.SignUp = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].SIGNUP), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(payload => {
+        this.LogInFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN_FAILURE), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(r => this.router.navigate(['/'])));
+        this.SignUp = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(payload => {
             return this.authService.createUser(payload.name, payload.email, payload.password)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((user) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["SignUpSuccess"]({ name: payload.name, password: payload.password, email: payload.email });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["SignUpFailure"]({ error: error });
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((user) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpSuccess"]({ name: payload.name, password: payload.password, email: payload.email });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((error) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpFailure"]({ error: error });
             }));
         }));
-        this.SignUpSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].SIGNUP_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])((user) => {
+        this.SignUpSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])((user) => {
             return this.authService.login(user.payload.email, user.payload.password)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(response => {
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(response => {
                 this._snackBar.open('Sign up succesfully', null, {
                     duration: 2000,
                 });
                 this.authService.loggedIn(response);
             }));
         }));
-        this.SignUpFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].SIGNUP_FAILURE));
-        this.LogOut = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].LOGOUT), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((user) => {
+        this.SignUpFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_FAILURE));
+        this.LogOut = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGOUT), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((user) => {
             this._snackBar.open('Logout succesfully', null, {
                 duration: 2000,
             });
             this.authService.logout();
         }));
-        this.AutoLogin = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].AUTO_LOGIN), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload));
-        this.ChangePassword = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].CHANGE_PASSWORD), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(user => {
+        this.AutoLogin = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].AUTO_LOGIN), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload));
+        this.ChangePassword = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].CHANGE_PASSWORD), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(user => {
             return this.authService.changePassword(user)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(result => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["ChangePasswordSuccess"](result);
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["SignUpFailure"]({ error: error });
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(result => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordSuccess"](result);
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((error) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpFailure"]({ error: error });
             }));
         }));
-        this.ChangePasswordSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].CHANGE_PASSWORD_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(loggedInData => {
+        this.ChangePasswordSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].CHANGE_PASSWORD_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(loggedInData => {
             this.authService.loggedIn(loggedInData);
         }));
-        this.UpdateUser = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].UPDATE_USER_DATA), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(payload => {
+        this.UpdateUser = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].UPDATE_USER_DATA), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((action) => action.payload), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(payload => {
             return this.authService.updateUser(payload.id, payload.name, payload.email, payload.image)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((user) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["UpdateUserSuccess"]({ name: payload.name, email: payload.email, image: user.result.imagePath });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["SignUpFailure"]({ error: error });
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((user) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["UpdateUserSuccess"]({
+                    result: user.result
+                });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((error) => {
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpFailure"]({ error: error });
             }));
         }));
-        this.UpdateUserSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_4__["AuthActionTypes"].UPDATE_USER_DATA_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(user => {
+        this.UpdateUserSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].UPDATE_USER_DATA_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(user => {
             this._snackBar.open('User updated succesfully', null, {
                 duration: 2000,
             });
-            localStorage.setItem("name", user.payload.name);
-            localStorage.setItem("image", user.payload.image);
+            this.authService.loggedIn(user.payload.result);
+            localStorage.setItem("name", user.payload.result.name);
+            localStorage.setItem("image", user.payload.result.imagePath);
         }));
     }
 };
 AuthEffects.ctorParameters = () => [
     { type: _ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Actions"] },
-    { type: src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
-    { type: _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }
+    { type: src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] },
+    { type: _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSnackBar"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])()
@@ -1541,7 +1544,6 @@ const initialState = {
 function reducer(state = initialState, action) {
     switch (action.type) {
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__["AuthActionTypes"].LOGIN_SUCCESS: {
-            console.log(action);
             return Object.assign({}, state, { isAuthenticated: true, user: {
                     email: action.payload.email,
                     token: action.payload.token,
@@ -1576,9 +1578,9 @@ function reducer(state = initialState, action) {
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__["AuthActionTypes"].UPDATE_USER_DATA_SUCCESS: {
             return Object.assign({}, state, { user: {
-                    name: action.payload.name,
-                    email: action.payload.email,
-                    image: action.payload.image
+                    name: action.payload.result.name,
+                    email: action.payload.result.email,
+                    image: action.payload.result.imagePath
                 } });
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__["AuthActionTypes"].CHANGE_PASSWORD_SUCCESS: {
@@ -1726,11 +1728,10 @@ let EditProfileComponent = class EditProfileComponent {
             this.userForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
                 name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.user.name),
                 email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.user.email),
-                image: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, {
+                image: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.user.image, {
                     validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                     asyncValidators: [src_app_posts_post_create_mime_type_validator__WEBPACK_IMPORTED_MODULE_7__["mimeType"]]
                 })
-                // password: new FormControl(''),
             });
             this.imagePreview = this.user.image;
         });
@@ -1819,7 +1820,6 @@ let ForgotPasswordComponent = class ForgotPasswordComponent {
             this.isLoading = false;
             this.responseMessage = response.message;
         }, error => {
-            console.log(error);
         });
     }
 };
@@ -1853,7 +1853,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiUrl: "https://ngtravelapp.herokuapp.com/api" // https://ngtravelapp.herokuapp.com/api
+    apiUrl: "https://ngtravelapp.herokuapp.com/api" // http://localhost:3000/api https://ngtravelapp.herokuapp.com/api
 };
 /*
  * For easier debugging in development mode, you can import the following file

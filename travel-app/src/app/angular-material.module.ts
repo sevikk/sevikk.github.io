@@ -9,7 +9,7 @@ import {
   MatPaginatorModule,
   MatDialogModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 } from "@angular/material";
 
 @NgModule({

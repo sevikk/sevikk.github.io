@@ -16,4 +16,6 @@ router.post("/forgot", UserController.forgotPassword);
 
 router.post("/reset", UserController.resetPassword);
 
+router.post("/check", UserController.checkEmailRelevance);
+
 module.exports = router;

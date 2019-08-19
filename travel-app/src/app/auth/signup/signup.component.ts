@@ -1,19 +1,24 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgForm, FormGroup, FormControl } from "@angular/forms";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, AbstractControl } from "@angular/forms";
+import { Observable } from "rxjs";
 import { Store } from '@ngrx/store';
 
 import { AuthService } from "../auth.service";
-import { AppAuthState } from 'src/app/store/app.states';
+import { AppAuthState, selectAuthState } from 'src/app/store/app.states';
 import { SignUp } from 'src/app/store/actions/auth.actions';
+import { State } from 'src/app/store/reducers/auth.reducers';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   templateUrl: "./signup.component.html",
   styleUrls: ["./signup.component.css"]
 })
-export class SignupComponent implements OnInit, OnDestroy {
+export class SignupComponent implements OnInit {
   isLoading = false;
-  private authStatusSub: Subscription;
+
+  errorMessage: string;
+
+  getState: Observable<any>;
 
   authForm = new FormGroup({
     name: new FormControl(''),
@@ -24,14 +29,30 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private store: Store<AppAuthState>
-  ) {}
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
+    this.getState.subscribe((state: State) => {
+      if (state) {
         this.isLoading = false;
       }
-    );
+    })
+    this.authForm.controls.email.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((value: string) => {
+      this.authService.checkValidEmail(value)
+        .subscribe(response => {        
+          if (response.isAlreadyExist) {
+            this.authForm.controls.email.setValidators(ErrorValidate);
+          } else {
+            this.authForm.controls.email.clearValidators();
+          }
+          this.authForm.controls.email.updateValueAndValidity();
+        })
+    })
   }
 
   onSignup() {
@@ -47,8 +68,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     
     this.store.dispatch(new SignUp(payload));
   }
+}
 
-  ngOnDestroy() {
-    this.authStatusSub.unsubscribe();
-  }
+export function ErrorValidate(control: AbstractControl) {
+  return { validEmail: true };;
 }

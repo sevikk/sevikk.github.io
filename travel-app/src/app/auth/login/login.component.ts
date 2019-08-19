@@ -1,33 +1,50 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 
 import { AuthService } from "../auth.service";
 import { Store } from '@ngrx/store';
-import { AppAuthState } from 'src/app/store/app.states';
+import { AppAuthState, selectAuthState } from 'src/app/store/app.states';
 import { LogIn } from 'src/app/store/actions/auth.actions';
+import { State } from 'src/app/store/reducers/auth.reducers';
+import { MatDialog } from '@angular/material';
+import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 
 @Component({
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  isLoading = false;
-  private authStatusSub: Subscription;
-
+export class LoginComponent implements OnInit {
+  
   authForm: FormGroup;
+  getState: Observable<any>;
+
+  isLoading = false;
 
   constructor(
     public authService: AuthService,
-    private store: Store<AppAuthState>
-  ) {}
+    private store: Store<AppAuthState>,
+    public dialog: MatDialog
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
+    this.getState.subscribe((state: State) => {
+      if (state) {
         this.isLoading = false;
+        if (state.errorMessage) {
+          const dialogRef = this.dialog.open(ModalDialogComponent, {
+            width: '400px',
+            data: state.errorMessage
+          });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+          });
+        }
       }
-    );
+    })
     this.authForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -44,9 +61,5 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: this.authForm.value.password
     };
     this.store.dispatch(new LogIn(payload));
-  }
-
-  ngOnDestroy() {
-    this.authStatusSub.unsubscribe();
   }
 }

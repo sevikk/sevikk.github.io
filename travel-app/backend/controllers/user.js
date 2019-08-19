@@ -13,19 +13,57 @@ exports.createUser = (req, res, next) => {
     });
     user
       .save()
-      .then(result => {     
-        res.status(201).json({
+      .then(result => {
+        console.log(result);
+
+        const token = jwt.sign(
+          { 
+            email: result.email,
+            name: result.name,
+            userId: result._id 
+          },
+          'secret_this',
+          { expiresIn: "1h" }
+        );
+        
+        res.status(200).json({
           message: "User created!",
-          result: result
+          userData: {
+            token: token,
+            expiresIn: 3600,
+            userId: result._id,
+            name: result.name,
+            email: result.email
+          }
         });
       })
-      .catch(err => {
-        res.status(500).json({
-          message: "Invalid authentication credentials!"
-        });
+      .catch(err => {        
+          res.status(400).json({
+            message: "This email is already taken. Choose another one"
+          });
       });
   });
-  
+}
+
+exports.checkEmailRelevance = (req,res, next) => {
+  User.findOne({email: req.body.email})
+  .then(user => {
+    console.log(user);
+    if (!user) {
+      return res.status(200).json({
+        isAlreadyExist: false
+      });
+    } else {
+      return res.status(200).json({
+        isAlreadyExist: true
+      });
+    }
+  })
+  .catch(err => {
+    return res.status(401).json({
+      isAlreadyExist: false
+    });
+  });
 }
 
 exports.userLogin = (req, res, next) => {
@@ -34,7 +72,7 @@ exports.userLogin = (req, res, next) => {
     .then(user => {                
       if (!user) {
         return res.status(401).json({
-          message: "Can not find mentioned user"
+          message: "Your login or passwoord is incorrect. Please check again and try carefully"
         });
       }
       fetchedUser = user;        

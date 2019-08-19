@@ -10,9 +10,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { reducers } from '../store/app.states';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent],
+  declarations: [LoginComponent, SignupComponent, ModalDialogComponent],
   imports: [
     CommonModule, 
     AngularMaterialModule, 
@@ -21,6 +22,9 @@ import { reducers } from '../store/app.states';
     AuthRoutingModule,
     // StoreModule.forRoot(reducers, {}),
     // EffectsModule.forRoot([AuthEffects]),
+  ],
+  entryComponents: [
+    ModalDialogComponent
   ]
 })
 export class AuthModule {}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, empty } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import {
@@ -42,8 +42,7 @@ export class AuthEffects {
           return new LogInSuccess({user: user, email: payload.email});
         }),
         catchError((err: any) => {
-          new LogInFailure({ error: err });
-          return of(null) //throwError(new LogInFailure({ error: err }))
+          return of(new LogInFailure({ error: err.error.message }))
         })
       )
     })
@@ -64,8 +63,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_FAILURE),
-    map((action: any) => action.payload),
-    tap(r => this.router.navigate(['/']))
+    map((action: any) => action.payload)
   );
 
   @Effect()
@@ -75,11 +73,13 @@ export class AuthEffects {
     switchMap(payload => {      
       return this.authService.createUser(payload.name, payload.email, payload.password)
       .pipe(
-        map((user: User) => {
-          return new SignUpSuccess({name: payload.name, password: payload.password, email: payload.email});
+        map((user: User | any) => {
+          return new SignUpSuccess({
+            userData: user.userData
+          });
         }),
-        catchError((error) => {
-          return (new SignUpFailure({ error: error }) as any);
+        catchError((err) => {
+          return of(new SignUpFailure({ error: err.error.message }))
         })
       )
     })
@@ -88,23 +88,20 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
-    switchMap((user: any) => {
-      return this.authService.login(user.payload.email, user.payload.password)
-        .pipe(
-          map(response => {
-            this._snackBar.open('Sign up succesfully', null, {
-              duration: 2000,
-            });
-            this.authService.loggedIn(response)
-          })
-        );
+    map((action: SignUp) => action.payload),
+    tap(result => {
+      this._snackBar.open('Sign up succesfully', null, {
+        duration: 2000,
+      });
+      this.authService.loggedIn(result.userData)
     })
   );
   
 
   @Effect({ dispatch: false })
   SignUpFailure: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.SIGNUP_FAILURE)
+    ofType(AuthActionTypes.SIGNUP_FAILURE),
+    map((action: SignUpFailure) => action.payload)
   );
 
   @Effect({ dispatch: false })

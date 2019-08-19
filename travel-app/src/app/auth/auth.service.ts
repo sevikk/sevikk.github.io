@@ -64,7 +64,7 @@ export class AuthService {
   login(email: string, password: string) {    
     const authData: AuthData = { email: email, password: password };
     return this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
+      .post( //<{ token: string; expiresIn: number; userId: string }>
         BACKEND_URL + "/login",
         authData
       )
@@ -87,11 +87,17 @@ export class AuthService {
         now.getTime() + expiresInDuration * 1000
       );
       this.saveAuthData(token, expirationDate, this.userId, response.name);
-      if (!response.edited) {
-        this.router.navigate(["/"]);
-      }
-      
     }
+    if (!response.edited) {
+      this.router.navigate(["/"]);
+    }
+  }
+
+  checkValidEmail(email: string) {
+    const userData = {
+      email: email
+    };
+    return this.http.post<{ isAlreadyExist: boolean }>(BACKEND_URL + '/check', userData)
   }
 
   autoAuthUser() {
