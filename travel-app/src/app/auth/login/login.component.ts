@@ -34,13 +34,9 @@ export class LoginComponent implements OnInit {
       if (state) {
         this.isLoading = false;
         if (state.errorMessage) {
-          const dialogRef = this.dialog.open(ModalDialogComponent, {
+          this.dialog.open(ModalDialogComponent, {
             width: '400px',
             data: state.errorMessage
-          });
-      
-          dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
           });
         }
       }

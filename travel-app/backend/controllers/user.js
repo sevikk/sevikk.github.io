@@ -72,7 +72,7 @@ exports.userLogin = (req, res, next) => {
     .then(user => {                
       if (!user) {
         return res.status(401).json({
-          message: "Your login or passwoord is incorrect. Please check again and try carefully"
+          message: "Your login or passwoord is incorrect. Please try again and check carefully"
         });
       }
       fetchedUser = user;        

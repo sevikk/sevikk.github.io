@@ -7,6 +7,8 @@ import { PostsService } from "../posts.service";
 import { AuthService } from "../../auth/auth.service";
 import { AppAuthState, selectAuthState } from 'src/app/store/app.states';
 import { Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: "app-post-list",
@@ -24,18 +26,21 @@ export class PostListComponent implements OnInit, OnDestroy {
   userId: string;
   private postsSub: Subscription;
 
+  currentUser;
   getState: Observable<any>;
 
   constructor(
     public postsService: PostsService,
     private authService: AuthService,
-    private store: Store<AppAuthState>
+    private store: Store<AppAuthState>,
+    private route: ActivatedRoute
   ) {
     this.getState = this.store.select(selectAuthState);
   }
 
   ngOnInit() {
-    this.isLoading = true;
+    this.isLoading = true;    
+    
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
     this.postsSub = this.postsService
@@ -44,10 +49,16 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
+        if (this.route.snapshot.url[0] && this.route.snapshot.url[0].path === "myposts") {
+          this.posts = this.posts.filter(post => {
+            return post.creatorEmail == this.currentUser.email
+          })
+        }
       });
       this.getState.subscribe((state) => {
         this.userIsAuthenticated = state.isAuthenticated;
         this.userId = this.authService.getUserId();
+        this.currentUser = state.user;       
       });
   }
 

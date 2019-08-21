@@ -8,14 +8,15 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 const routes: Routes = [
-  { path: "", component: PostListComponent },
+  { path: "", redirectTo: 'posts', pathMatch: 'full' },
+  { path: "posts", component: PostListComponent },
   { path: "create", component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: "edit/:postId", component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: "auth", loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   { path: "profile", component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: "forgot", component: ForgotPasswordComponent },
   { path: "reset-password/:id", component: ChangePasswordComponent },
-
+  { path: "myposts", component: PostListComponent }
 ];
 
 @NgModule({

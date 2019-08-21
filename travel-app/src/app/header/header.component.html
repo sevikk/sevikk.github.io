@@ -3,6 +3,19 @@
     <a routerLink="/">My App</a>
   </span>
   <span class="spacer"></span>
+  <ul  *ngIf="userIsAuthenticated" class="header-menu">
+    <li >
+      <a mat-button routerLink="/posts" routerLinkActive="mat-accent">
+        All posts
+      </a>
+    </li>
+    <li >
+      <a mat-button routerLink="/myposts" routerLinkActive="mat-accent">  
+        My posts
+      </a>
+    </li>
+  </ul>
+  <span class="spacer"></span>
   <div *ngIf="userIsAuthenticated" class="user">
     <div class="user-block">
       <button mat-button [matMenuTriggerFor]="beforeMenu">
@@ -17,9 +30,6 @@
       <li mat-menu-item routerLink="/profile" routerLinkActive="mat-accent">
         Edit profile
       </li>
-      <!-- <li mat-menu-item routerLink="/forgot" routerLinkActive="mat-accent">
-        Reset password
-      </li> -->
       <li mat-menu-item (click)="onLogout()">
         Logout
       </li>

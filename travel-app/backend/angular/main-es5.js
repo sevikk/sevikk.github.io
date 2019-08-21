@@ -344,7 +344,9 @@ var AppModule = /** @class */ (function () {
                 { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_8__["AuthInterceptor"], multi: true },
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
-            entryComponents: [_error_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"]]
+            entryComponents: [
+                _error_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"],
+            ]
         })
     ], AppModule);
     return AppModule;
@@ -517,7 +519,8 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.login = function (email, password) {
         var authData = { email: email, password: password };
         return this.http
-            .post(BACKEND_URL + "/login", authData);
+            .post(//<{ token: string; expiresIn: number; userId: string }>
+        BACKEND_URL + "/login", authData);
     };
     AuthService.prototype.changePassword = function (resetData) {
         return this.http.post(BACKEND_URL + "/reset", resetData);
@@ -533,10 +536,16 @@ var AuthService = /** @class */ (function () {
             var now = new Date();
             var expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
             this.saveAuthData(token, expirationDate, this.userId, response.name);
-            if (!response.edited) {
-                this.router.navigate(["/"]);
-            }
         }
+        if (!response.edited) {
+            this.router.navigate(["/"]);
+        }
+    };
+    AuthService.prototype.checkValidEmail = function (email) {
+        var userData = {
+            email: email
+        };
+        return this.http.post(BACKEND_URL + '/check', userData);
     };
     AuthService.prototype.autoAuthUser = function () {
         var authInformation = this.getAuthData();
@@ -1467,8 +1476,7 @@ var AuthEffects = /** @class */ (function () {
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
                 return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["LogInSuccess"]({ user: user, email: payload.email });
             }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
-                new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["LogInFailure"]({ error: err });
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null); //throwError(new LogInFailure({ error: err }))
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["LogInFailure"]({ error: err.error.message }));
             }));
         }));
         this.LogInSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (user) {
@@ -1478,25 +1486,24 @@ var AuthEffects = /** @class */ (function () {
             localStorage.setItem("email", user.payload.email);
             _this.authService.loggedIn(user.payload.user);
         }));
-        this.LogInFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN_FAILURE), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (action) { return action.payload; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (r) { return _this.router.navigate(['/']); }));
+        this.LogInFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGIN_FAILURE), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (action) { return action.payload; }));
         this.SignUp = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (action) { return action.payload; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (payload) {
             return _this.authService.createUser(payload.name, payload.email, payload.password)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpSuccess"]({ name: payload.name, password: payload.password, email: payload.email });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
-                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpFailure"]({ error: error });
-            }));
-        }));
-        this.SignUpSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (user) {
-            return _this.authService.login(user.payload.email, user.payload.password)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) {
-                _this._snackBar.open('Sign up succesfully', null, {
-                    duration: 2000,
+                return new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpSuccess"]({
+                    userData: user.userData
                 });
-                _this.authService.loggedIn(response);
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(new _actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["SignUpFailure"]({ error: err.error.message }));
             }));
         }));
-        this.SignUpFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_FAILURE));
+        this.SignUpSuccess = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_SUCCESS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (action) { return action.payload; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (result) {
+            _this._snackBar.open('Sign up succesfully', null, {
+                duration: 2000,
+            });
+            _this.authService.loggedIn(result.userData);
+        }));
+        this.SignUpFailure = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].SIGNUP_FAILURE), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (action) { return action.payload; }));
         this.LogOut = this.actions.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__["AuthActionTypes"].LOGOUT), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (user) {
             _this._snackBar.open('Logout succesfully', null, {
                 duration: 2000,
@@ -1620,17 +1627,17 @@ function reducer(state, action) {
                 }, errorMessage: null });
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__["AuthActionTypes"].LOGIN_FAILURE: {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, state, { errorMessage: 'Incorrect email and/or password.' });
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, state, { errorMessage: action.payload.error });
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__["AuthActionTypes"].SIGNUP_SUCCESS: {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, state, { isAuthenticated: true, user: {
-                    token: action.payload.token,
-                    email: action.payload.email,
-                    name: action.payload.name
+                    token: action.payload.userData.token,
+                    email: action.payload.userData.email,
+                    name: action.payload.userData.name
                 }, errorMessage: null });
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__["AuthActionTypes"].SIGNUP_FAILURE: {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, state, { errorMessage: 'That email is already in use.' });
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, state, { errorMessage: action.payload.error });
         }
         case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__["AuthActionTypes"].LOGOUT: {
             return initialState;
@@ -1792,16 +1799,18 @@ var EditProfileComponent = /** @class */ (function () {
     EditProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.getState.subscribe(function (state) {
-            _this.user = state.user;
-            _this.userForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-                name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.name),
-                email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.email),
-                image: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.image, {
-                    validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                    asyncValidators: [src_app_posts_post_create_mime_type_validator__WEBPACK_IMPORTED_MODULE_7__["mimeType"]]
-                })
-            });
-            _this.imagePreview = _this.user.image;
+            if (state && state.user) {
+                _this.user = state.user;
+                _this.userForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+                    name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.name),
+                    email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.email),
+                    image: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](_this.user.image, {
+                        validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        asyncValidators: [src_app_posts_post_create_mime_type_validator__WEBPACK_IMPORTED_MODULE_7__["mimeType"]]
+                    })
+                });
+                _this.imagePreview = _this.user.image;
+            }
         });
     };
     EditProfileComponent.prototype.onImagePicked = function (event) {

@@ -27,3 +27,13 @@ ul {
   height: 40px;
   border-radius: 50%;
 }
+
+.header-menu {
+  float: left;
+}
+
+.header-menu li {
+  padding: 0 10px;
+  cursor: pointer;
+  outline: none;
+}

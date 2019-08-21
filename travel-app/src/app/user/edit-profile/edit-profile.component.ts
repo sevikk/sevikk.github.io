@@ -31,6 +31,7 @@ export class EditProfileComponent implements OnInit {
 
     ngOnInit() {
         this.getState.subscribe((state) => {
+          if (state && state.user) {
             this.user = state.user;
             this.userForm = new FormGroup({
                 name: new FormControl(this.user.name),
@@ -40,8 +41,9 @@ export class EditProfileComponent implements OnInit {
                   asyncValidators: [mimeType]
                 })
             });
-            this.imagePreview = this.user.image;                        
-          });
+            this.imagePreview = this.user.image;
+          }                         
+        });
     }
 
     onImagePicked(event: Event) {
