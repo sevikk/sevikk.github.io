@@ -25,7 +25,7 @@
     "@ngrx/effects": "^8.2.0",
     "@ngrx/store": "^8.2.0",
     "@ngrx/store-devtools": "^8.2.0",
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "bcrypt": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
